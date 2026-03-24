@@ -1,0 +1,80 @@
+---
+layout: default
+---
+{% assign estado_color = "bg-gray-100 text-gray-600" %}
+{% if page.estado == "Aprovada" %}{% assign estado_color = "bg-green-100 text-green-700" %}{% endif %}
+{% if page.estado == "Rejeitada" %}{% assign estado_color = "bg-red-100 text-red-700" %}{% endif %}
+{% if page.estado == "Em análise" %}{% assign estado_color = "bg-yellow-100 text-yellow-700" %}{% endif %}
+
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+  <a href="{{ '/propostas/' | relative_url }}" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-livre-green mb-6 transition-colors">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    Todas as propostas
+  </a>
+
+  <div class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8">
+    <!-- Badges -->
+    <div class="flex flex-wrap items-center gap-2 mb-4">
+      <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-livre-green-light text-livre-green-dark">{{ page.tipo }}</span>
+      <span class="text-xs font-medium px-2 py-0.5 rounded-full {{ estado_color }}">{{ page.estado }}</span>
+    </div>
+
+    <h1 class="text-xl font-bold text-livre-dark leading-snug">{{ page.titulo }}</h1>
+
+    <!-- Meta -->
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-sm text-gray-500">
+      {% if page.data %}
+        <span>{{ page.data | date: "%d de %B de %Y" }}</span>
+      {% endif %}
+      {% if page.junta %}
+        {% assign junta_page = site.juntas | where: "slug", page.junta | first %}
+        {% if junta_page %}
+          <a href="{{ junta_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ junta_page.nome }}</a>
+        {% else %}
+          <!-- Check standalone pages (Câmara, Assembleia Municipal) -->
+          <span>{{ page.junta | replace: "-", " " | capitalize }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <!-- Authors -->
+    {% if page.autarcas and page.autarcas.size > 0 %}
+      <div class="mt-4 flex flex-wrap gap-2">
+        {% for autarca_slug in page.autarcas %}
+          {% assign autarca = site.autarcas | where: "slug", autarca_slug | first %}
+          {% if autarca %}
+            <a href="{{ autarca.url | relative_url }}" class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 border border-gray-200 rounded-full text-xs font-medium text-gray-700 hover:border-livre-green hover:text-livre-green transition-colors">
+              {% if autarca.foto %}
+                <img src="{{ autarca.foto | relative_url }}" alt="" class="w-4 h-4 rounded-full object-cover">
+              {% endif %}
+              {{ autarca.nome }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.documento_url %}
+      <a href="{{ page.documento_url }}" class="inline-flex items-center gap-1.5 mt-5 text-sm text-livre-green hover:text-livre-green-dark transition-colors" rel="noopener" target="_blank">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Ver documento
+      </a>
+    {% endif %}
+
+    <!-- Tags -->
+    {% if page.tags and page.tags.size > 0 %}
+      <div class="flex flex-wrap gap-1.5 mt-5">
+        {% for tag in page.tags %}
+          <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Full text -->
+  {% if content and content != "" %}
+    <div class="mt-6 bg-white rounded-2xl border border-gray-200 p-6 md:p-8 prose prose-gray max-w-none prose-a:text-livre-green prose-headings:text-livre-dark">
+      {{ content }}
+    </div>
+  {% endif %}
+</div>

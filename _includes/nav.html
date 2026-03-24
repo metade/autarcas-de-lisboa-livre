@@ -1,0 +1,51 @@
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <a href="{{ '/' | relative_url }}" class="flex items-center gap-2 font-bold text-livre-dark hover:text-livre-green transition-colors">
+        <span class="text-livre-green text-xl font-black">L</span>
+        <span class="text-sm font-semibold leading-tight">Autarcas de Lisboa</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-1">
+        <a href="{{ '/camara-municipal/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Câmara Municipal
+        </a>
+        <a href="{{ '/assembleia-municipal/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Assembleia Municipal
+        </a>
+        <a href="{{ '/juntas/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Juntas de Freguesia
+        </a>
+        <a href="{{ '/autarcas/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Autarcas
+        </a>
+        <a href="{{ '/propostas/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Propostas
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button id="menu-toggle" class="md:hidden p-2 rounded-md text-gray-600 hover:text-livre-green hover:bg-livre-green-light" aria-label="Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-1">
+      <a href="{{ '/camara-municipal/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Câmara Municipal</a>
+      <a href="{{ '/assembleia-municipal/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Assembleia Municipal</a>
+      <a href="{{ '/juntas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Juntas de Freguesia</a>
+      <a href="{{ '/autarcas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Autarcas</a>
+      <a href="{{ '/propostas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Propostas</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.getElementById('menu-toggle').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>

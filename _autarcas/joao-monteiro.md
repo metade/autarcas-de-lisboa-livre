@@ -1,0 +1,21 @@
+---
+nome: "João Monteiro"
+slug: "joao-monteiro"
+foto: ""
+mandato_inicio: 2025-10-01
+ativo: true
+juntas:
+  - assembleia-municipal
+  - penha-de-franca
+cargos:
+  - cargo: "Deputado Municipal"
+    orgao: "Assembleia Municipal de Lisboa"
+    junta: "assembleia-municipal"
+  - cargo: "Deputado de Freguesia"
+    orgao: "Assembleia de Freguesia da Penha de França"
+    junta: "penha-de-franca"
+biografia: ""
+contacto_email: ""
+contacto_twitter: ""
+contacto_instagram: ""
+---

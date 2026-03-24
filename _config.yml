@@ -1,0 +1,55 @@
+title: "Autarcas de Lisboa – Livre"
+description: "Eleitos e eleitas do Livre na Câmara Municipal, Assembleia Municipal e Juntas de Freguesia de Lisboa"
+baseurl: ""
+url: ""
+lang: pt
+
+# Collections
+collections:
+  pages:
+    output: true
+  autarcas:
+    output: true
+    permalink: /autarcas/:slug/
+  juntas:
+    output: true
+    permalink: /juntas/:slug/
+  propostas:
+    output: true
+    permalink: /propostas/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: autarcas
+    values:
+      layout: autarca
+  - scope:
+      path: ""
+      type: juntas
+    values:
+      layout: junta
+  - scope:
+      path: ""
+      type: propostas
+    values:
+      layout: proposta
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - Gemfile
+  - Gemfile.lock
+  - README.md

@@ -1,0 +1,13 @@
+{
+  "name": "autarcas-de-lisboa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/main.min.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "tailwindcss": "^3.4.17"
+  }
+}

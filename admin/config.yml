@@ -1,0 +1,255 @@
+backend:
+  name: github
+  repo: OWNER/autarcas-de-lisboa  # TODO: replace with actual org/repo
+  branch: main
+  base_url: https://YOUR-WORKER.workers.dev  # TODO: replace with Cloudflare Worker URL
+  auth_endpoint: /auth
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+locale: pt
+
+collections:
+
+  # ── AUTARCAS ──────────────────────────────────────────────────────────────
+  - name: autarcas
+    label: Autarcas
+    label_singular: Autarca
+    folder: _autarcas
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nome
+    media_folder: "assets/images/autarcas"
+    public_folder: "/assets/images/autarcas"
+    fields:
+      - label: Nome completo
+        name: nome
+        widget: string
+
+      - label: Fotografia
+        name: foto
+        widget: image
+        required: false
+        default: ""
+
+      - label: Ativo
+        name: ativo
+        widget: boolean
+        default: true
+
+      - label: Início de mandato
+        name: mandato_inicio
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        required: false
+
+      - label: Biografia
+        name: biografia
+        widget: markdown
+        required: false
+
+      - label: Email de contacto
+        name: contacto_email
+        widget: string
+        required: false
+        default: ""
+
+      - label: Twitter / X (só o @, sem o @)
+        name: contacto_twitter
+        widget: string
+        required: false
+        default: ""
+
+      - label: Instagram (só o @, sem o @)
+        name: contacto_instagram
+        widget: string
+        required: false
+        default: ""
+
+      - label: Juntas (slugs para filtragem — preencher automaticamente com os valores de Cargos)
+        name: juntas
+        widget: list
+        field:
+          label: Slug da junta
+          name: junta_slug
+          widget: string
+
+      - label: Cargos
+        name: cargos
+        widget: list
+        fields:
+          - label: Cargo
+            name: cargo
+            widget: select
+            options:
+              - label: "Vereador/a (Câmara Municipal)"
+                value: "Vereador"
+              - label: "Vereadora (Câmara Municipal)"
+                value: "Vereadora"
+              - label: "Deputado Municipal (Assembleia Municipal)"
+                value: "Deputado Municipal"
+              - label: "Deputada Municipal (Assembleia Municipal)"
+                value: "Deputada Municipal"
+              - label: "Deputado/a de Freguesia"
+                value: "Deputado de Freguesia"
+              - label: "Deputada de Freguesia"
+                value: "Deputada de Freguesia"
+          - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
+            name: orgao
+            widget: string
+          - label: Slug da junta (ex. "arroios", "assembleia-municipal")
+            name: junta
+            widget: string
+
+      - label: Texto adicional (bio alargada)
+        name: body
+        widget: markdown
+        required: false
+
+  # ── JUNTAS DE FREGUESIA ────────────────────────────────────────────────────
+  - name: juntas
+    label: Juntas de Freguesia
+    label_singular: Junta de Freguesia
+    folder: _juntas
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nome
+    fields:
+      - label: Nome
+        name: nome
+        widget: string
+
+      - label: Slug (identificador único, ex. "avenidas-novas")
+        name: slug
+        widget: string
+
+      - label: Tipo de órgão
+        name: tipo
+        widget: select
+        options:
+          - Assembleia de Freguesia
+        default: Assembleia de Freguesia
+
+      - label: Descrição
+        name: descricao
+        widget: markdown
+        required: false
+
+      - label: Website oficial
+        name: website_oficial
+        widget: string
+        required: false
+        default: ""
+
+      - label: Fotografia / Imagem
+        name: foto_junta
+        widget: image
+        required: false
+        default: ""
+
+      - label: Texto adicional
+        name: body
+        widget: markdown
+        required: false
+
+  # ── PROPOSTAS / MOÇÕES ─────────────────────────────────────────────────────
+  - name: propostas
+    label: Propostas e Moções
+    label_singular: Proposta
+    folder: _propostas
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: Título
+        name: titulo
+        widget: string
+
+      - label: Tipo
+        name: tipo
+        widget: select
+        options:
+          - Proposta
+          - Moção
+          - Requerimento
+          - Voto
+        default: Proposta
+
+      - label: Data
+        name: data
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+
+      - label: Órgão / Junta (slug, ex. "arroios" ou "assembleia-municipal")
+        name: junta
+        widget: string
+
+      - label: Autores / Signatários (slugs dos autarcas)
+        name: autarcas
+        widget: list
+        field:
+          label: Slug do autarca
+          name: autarca_slug
+          widget: string
+
+      - label: Estado
+        name: estado
+        widget: select
+        options:
+          - Em análise
+          - Aprovada
+          - Rejeitada
+          - Retirada
+        default: Em análise
+
+      - label: Resumo (para listagens)
+        name: resumo
+        widget: text
+        required: false
+
+      - label: Documento (URL para PDF)
+        name: documento_url
+        widget: string
+        required: false
+        default: ""
+
+      - label: Etiquetas
+        name: tags
+        widget: list
+        required: false
+
+      - label: Texto completo
+        name: body
+        widget: markdown
+
+  # ── PÁGINAS ESTÁTICAS ──────────────────────────────────────────────────────
+  - name: pages
+    label: Páginas
+    files:
+      - label: Câmara Municipal
+        name: camara_municipal
+        file: _pages/camara-municipal.md
+        fields:
+          - { label: Nome, name: nome, widget: string }
+          - { label: Descrição, name: descricao, widget: markdown, required: false }
+          - { label: Website oficial, name: website_oficial, widget: string, required: false }
+          - { label: Fotografia, name: foto_junta, widget: image, required: false }
+
+      - label: Assembleia Municipal
+        name: assembleia_municipal
+        file: _pages/assembleia-municipal.md
+        fields:
+          - { label: Nome, name: nome, widget: string }
+          - { label: Descrição, name: descricao, widget: markdown, required: false }
+          - { label: Website oficial, name: website_oficial, widget: string, required: false }
+          - { label: Fotografia, name: foto_junta, widget: image, required: false }
+
+      - label: Sobre
+        name: sobre
+        file: _pages/sobre.md
+        fields:
+          - { label: Conteúdo, name: body, widget: markdown }
