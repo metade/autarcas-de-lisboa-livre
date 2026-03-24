@@ -12,13 +12,12 @@ layout: default
     <div class="md:flex">
       <!-- Photo -->
       <div class="md:w-64 flex-shrink-0 bg-livre-green-light">
-        {% if page.foto %}
+        {% if page.foto != "" %}
           <img src="{{ page.foto | relative_url }}" alt="Fotografia de {{ page.nome }}" class="w-full h-64 md:h-full object-cover">
         {% else %}
-          <div class="w-full h-64 md:h-full flex items-center justify-center text-livre-green">
-            <svg class="w-24 h-24 opacity-30" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-            </svg>
+          <div class="w-full h-64 md:h-full relative bg-stone-50">
+            <div class="absolute h-full top-0 left-[5%] w-[55%] rounded-r-full" style="background: #bdd600; mix-blend-mode: multiply;"></div>
+            <div class="absolute h-full top-0 right-[5%] w-[55%] rounded-l-full" style="background: #00b4ed; mix-blend-mode: multiply;"></div>
           </div>
         {% endif %}
       </div>

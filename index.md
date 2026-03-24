@@ -3,7 +3,7 @@ layout: default
 title: "Início"
 ---
 <!-- Hero -->
-<div class="bg-gradient-to-br from-livre-dark to-gray-800 text-white">
+<div class="bg-gradient-to-br from-livre-dark to-[#1e2600] text-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
     <div class="max-w-2xl">
       <div class="inline-flex items-center gap-2 bg-livre-green/20 text-livre-green px-3 py-1 rounded-full text-sm font-medium mb-6">

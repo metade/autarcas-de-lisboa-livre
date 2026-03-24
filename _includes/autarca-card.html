@@ -1,13 +1,12 @@
 {% assign autarca = include.autarca %}
 <a href="{{ autarca.url | relative_url }}" class="group block bg-white rounded-xl border border-gray-200 hover:border-livre-green hover:shadow-md transition-all overflow-hidden">
   <div class="aspect-square bg-livre-green-light overflow-hidden">
-    {% if autarca.foto %}
+    {% if autarca.foto != "" %}
       <img src="{{ autarca.foto | relative_url }}" alt="Fotografia de {{ autarca.nome }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
     {% else %}
-      <div class="w-full h-full flex items-center justify-center text-livre-green">
-        <svg class="w-16 h-16 opacity-40" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-        </svg>
+      <div class="w-full h-full relative bg-stone-50">
+        <div class="absolute h-full top-0 left-[5%] w-[55%] rounded-r-full" style="background: #bdd600; mix-blend-mode: multiply;"></div>
+        <div class="absolute h-full top-0 right-[5%] w-[55%] rounded-l-full" style="background: #00b4ed; mix-blend-mode: multiply;"></div>
       </div>
     {% endif %}
   </div>
