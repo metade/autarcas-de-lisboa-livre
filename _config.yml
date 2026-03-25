@@ -16,7 +16,7 @@ collections:
     permalink: /juntas/:slug/
   propostas:
     output: true
-    permalink: /propostas/:slug/
+    permalink: /propostas/:path/
 
 defaults:
   - scope:
@@ -39,6 +39,29 @@ defaults:
       type: pages
     values:
       layout: page
+  # Per-organ junta defaults (auto-set front matter so Liquid filters work without editors filling it in)
+  - scope: { path: "_propostas/camara-municipal",        type: propostas }
+    values: { junta: camara-municipal }
+  - scope: { path: "_propostas/assembleia-municipal",    type: propostas }
+    values: { junta: assembleia-municipal }
+  - scope: { path: "_propostas/alvalade",                type: propostas }
+    values: { junta: alvalade }
+  - scope: { path: "_propostas/areeiro",                 type: propostas }
+    values: { junta: areeiro }
+  - scope: { path: "_propostas/arroios",                 type: propostas }
+    values: { junta: arroios }
+  - scope: { path: "_propostas/avenidas-novas",          type: propostas }
+    values: { junta: avenidas-novas }
+  - scope: { path: "_propostas/lumiar",                  type: propostas }
+    values: { junta: lumiar }
+  - scope: { path: "_propostas/parque-das-nacoes",       type: propostas }
+    values: { junta: parque-das-nacoes }
+  - scope: { path: "_propostas/penha-de-franca",         type: propostas }
+    values: { junta: penha-de-franca }
+  - scope: { path: "_propostas/santo-antonio",           type: propostas }
+    values: { junta: santo-antonio }
+  - scope: { path: "_propostas/sao-domingos-de-benfica", type: propostas }
+    values: { junta: sao-domingos-de-benfica }
 
 plugins:
   - jekyll-feed
