@@ -7,9 +7,11 @@ ativo: true
 juntas:
   - arroios
 cargos:
-  - cargo: "Deputada de Freguesia"
+  - cargo: "Membra de Assembleia"
     orgao: "Assembleia de Freguesia de Arroios"
     junta: "arroios"
+    suspenso_temporariamente: true
+    substituido_por: "patrick-sinclair"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

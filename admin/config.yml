@@ -85,7 +85,7 @@ collections:
             name: cargo
             widget: select
             options:
-              - label: "Vereador/a (Câmara Municipal)"
+              - label: "Vereador (Câmara Municipal)"
                 value: "Vereador"
               - label: "Vereadora (Câmara Municipal)"
                 value: "Vereadora"
@@ -93,16 +93,40 @@ collections:
                 value: "Deputado Municipal"
               - label: "Deputada Municipal (Assembleia Municipal)"
                 value: "Deputada Municipal"
-              - label: "Deputado/a de Freguesia"
-                value: "Deputado de Freguesia"
-              - label: "Deputada de Freguesia"
-                value: "Deputada de Freguesia"
+              - label: "Membro de Assembleia"
+                value: "Membro de Assembleia"
+              - label: "Membra de Assembleia"
+                value: "Membra de Assembleia"
+              - label: "Vogal do Executivo"
+                value: "Vogal do Executivo"
+              - label: "Primeiro Secretário"
+                value: "Primeiro Secretário"
+              - label: "Primeira Secretária"
+                value: "Primeira Secretária"
           - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
             name: orgao
             widget: string
           - label: Slug da junta (ex. "arroios", "assembleia-municipal")
             name: junta
             widget: string
+          - label: Suspenso/a temporariamente
+            name: suspenso_temporariamente
+            widget: boolean
+            default: false
+            required: false
+          - label: Cargo temporário (substituição)
+            name: temporario
+            widget: boolean
+            default: false
+            required: false
+          - label: Substitui (slug do autarca substituído/a)
+            name: substitui
+            widget: string
+            required: false
+          - label: Substituído/a por (slug do substituto/a)
+            name: substituido_por
+            widget: string
+            required: false
 
       - label: Texto adicional (bio alargada)
         name: body

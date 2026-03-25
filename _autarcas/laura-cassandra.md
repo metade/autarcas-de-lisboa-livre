@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - avenidas-novas
 cargos:
-  - cargo: "Deputada de Freguesia"
+  - cargo: "Membra de Assembleia"
     orgao: "Assembleia de Freguesia das Avenidas Novas"
     junta: "avenidas-novas"
 biografia: ""

@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - parque-das-nacoes
 cargos:
-  - cargo: "Deputada de Freguesia"
+  - cargo: "Membra de Assembleia"
     orgao: "Assembleia de Freguesia do Parque das Nações"
     junta: "parque-das-nacoes"
 biografia: ""

@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - alvalade
 cargos:
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia de Alvalade"
     junta: "alvalade"
 biografia: ""

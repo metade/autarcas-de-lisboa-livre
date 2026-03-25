@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - lumiar
 cargos:
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia do Lumiar"
     junta: "lumiar"
 biografia: ""

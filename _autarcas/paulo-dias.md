@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - santo-antonio
 cargos:
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia de Santo António"
     junta: "santo-antonio"
 biografia: ""

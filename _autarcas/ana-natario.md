@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - sao-domingos-de-benfica
 cargos:
-  - cargo: "Deputada de Freguesia"
+  - cargo: "Membra de Assembleia"
     orgao: "Assembleia de Freguesia de São Domingos de Benfica"
     junta: "sao-domingos-de-benfica"
 biografia: ""

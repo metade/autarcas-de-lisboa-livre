@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - arroios
 cargos:
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Primeiro Secretário"
     orgao: "Assembleia de Freguesia de Arroios"
     junta: "arroios"
 biografia: ""

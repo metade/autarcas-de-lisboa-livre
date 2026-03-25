@@ -7,9 +7,11 @@ ativo: true
 juntas:
   - arroios
 cargos:
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia de Arroios"
     junta: "arroios"
+    temporario: true
+    substitui: "patricia-robalo"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

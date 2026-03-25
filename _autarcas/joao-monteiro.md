@@ -11,7 +11,7 @@ cargos:
   - cargo: "Deputado Municipal"
     orgao: "Assembleia Municipal de Lisboa"
     junta: "assembleia-municipal"
-  - cargo: "Deputado de Freguesia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia da Penha de França"
     junta: "penha-de-franca"
 biografia: ""

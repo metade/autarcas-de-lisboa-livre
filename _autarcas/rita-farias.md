@@ -7,7 +7,7 @@ ativo: true
 juntas:
   - areeiro
 cargos:
-  - cargo: "Deputada de Freguesia"
+  - cargo: "Membra de Assembleia"
     orgao: "Assembleia de Freguesia do Areeiro"
     junta: "areeiro"
 biografia: ""
