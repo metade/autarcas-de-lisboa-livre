@@ -20,7 +20,7 @@ collections:
     create: true
     slug: "{{slug}}"
     identifier_field: nome
-    media_folder: "assets/images/autarcas"
+    media_folder: "/assets/images/autarcas"
     public_folder: "/assets/images/autarcas"
     fields:
       - label: Nome completo

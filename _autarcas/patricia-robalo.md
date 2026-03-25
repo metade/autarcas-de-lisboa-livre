@@ -1,7 +1,7 @@
 ---
 nome: "Patrícia Robalo"
 slug: "patricia-robalo"
-foto: ""
+foto: "/assets/images/autarcas/patricia-robalo.png"
 mandato_inicio: 2025-10-01
 ativo: true
 genero: f

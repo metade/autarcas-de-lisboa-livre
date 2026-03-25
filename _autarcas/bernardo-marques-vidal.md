@@ -1,7 +1,7 @@
 ---
 nome: "Bernardo Marques Vidal"
 slug: "bernardo-marques-vidal"
-foto: ""
+foto: "/assets/images/autarcas/bernardo-marques-vidal.jpg"
 mandato_inicio: 2025-10-01
 ativo: true
 genero: m
