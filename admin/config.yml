@@ -169,6 +169,30 @@ collections:
         required: false
         default: ""
 
+      - label: Facebook (URL completo)
+        name: facebook
+        widget: string
+        required: false
+        default: ""
+
+      - label: X / Twitter (URL completo)
+        name: x
+        widget: string
+        required: false
+        default: ""
+
+      - label: Instagram (URL completo)
+        name: instagram
+        widget: string
+        required: false
+        default: ""
+
+      - label: YouTube (URL completo)
+        name: youtube
+        widget: string
+        required: false
+        default: ""
+
       - label: Fotografia / Imagem
         name: foto_junta
         widget: image
@@ -525,6 +549,10 @@ collections:
           - { label: Nome, name: nome, widget: string }
           - { label: Descrição, name: descricao, widget: markdown, required: false }
           - { label: Website oficial, name: website_oficial, widget: string, required: false }
+          - { label: "Facebook (URL completo)", name: facebook, widget: string, required: false, default: "" }
+          - { label: "X / Twitter (URL completo)", name: x, widget: string, required: false, default: "" }
+          - { label: "Instagram (URL completo)", name: instagram, widget: string, required: false, default: "" }
+          - { label: "YouTube (URL completo)", name: youtube, widget: string, required: false, default: "" }
           - { label: Fotografia, name: foto_junta, widget: image, required: false }
 
       - label: Assembleia Municipal
@@ -534,6 +562,10 @@ collections:
           - { label: Nome, name: nome, widget: string }
           - { label: Descrição, name: descricao, widget: markdown, required: false }
           - { label: Website oficial, name: website_oficial, widget: string, required: false }
+          - { label: "Facebook (URL completo)", name: facebook, widget: string, required: false, default: "" }
+          - { label: "X / Twitter (URL completo)", name: x, widget: string, required: false, default: "" }
+          - { label: "Instagram (URL completo)", name: instagram, widget: string, required: false, default: "" }
+          - { label: "YouTube (URL completo)", name: youtube, widget: string, required: false, default: "" }
           - { label: Fotografia, name: foto_junta, widget: image, required: false }
 
       - label: Sobre
