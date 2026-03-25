@@ -31,11 +31,11 @@ layout: default
             {% for cargo in page.cargos %}
               <div class="flex items-center gap-2 flex-wrap">
                 {% if cargo.suspenso_temporariamente %}
-                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-700 rounded-full">{{ cargo.cargo }}</span>
+                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-700 rounded-full">{% include gendered.html text=cargo.cargo genero=page.genero %}</span>
                 {% elsif cargo.temporario %}
-                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">{{ cargo.cargo }}</span>
+                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">{% include gendered.html text=cargo.cargo genero=page.genero %}</span>
                 {% else %}
-                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-livre-green-light text-livre-green-dark rounded-full">{{ cargo.cargo }}</span>
+                  <span class="inline-block px-2 py-0.5 text-xs font-medium bg-livre-green-light text-livre-green-dark rounded-full">{% include gendered.html text=cargo.cargo genero=page.genero %}</span>
                 {% endif %}
                 {% assign junta_page = site.juntas | where: "slug", cargo.junta | first %}
                 {% if junta_page %}
@@ -44,7 +44,7 @@ layout: default
                   <span class="text-sm text-gray-600">{{ cargo.orgao }}</span>
                 {% endif %}
                 {% if cargo.suspenso_temporariamente %}
-                  <span class="text-xs font-medium px-1.5 py-0.5 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">Suspensa/o temporariamente</span>
+                  <span class="text-xs font-medium px-1.5 py-0.5 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">{% include gendered.html text="Suspenso/a temporariamente" genero=page.genero %}</span>
                 {% elsif cargo.temporario %}
                   <span class="text-xs font-medium px-1.5 py-0.5 bg-blue-50 text-blue-600 border border-blue-200 rounded-full">Em substituição</span>
                 {% endif %}

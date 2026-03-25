@@ -4,6 +4,7 @@ slug: "paulo-dias"
 foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
+genero: m
 juntas:
   - santo-antonio
 cargos:

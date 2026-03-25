@@ -4,6 +4,7 @@ slug: "joao-godinho"
 foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
+genero: m
 juntas:
   - avenidas-novas
 cargos:

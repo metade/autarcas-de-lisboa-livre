@@ -4,10 +4,11 @@ slug: "patricia-robalo"
 foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
+genero: f
 juntas:
   - arroios
 cargos:
-  - cargo: "Membra de Assembleia"
+  - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia de Arroios"
     junta: "arroios"
     suspenso_temporariamente: true

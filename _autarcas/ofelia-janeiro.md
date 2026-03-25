@@ -4,10 +4,11 @@ slug: "ofelia-janeiro"
 foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
+genero: f
 juntas:
   - assembleia-municipal
 cargos:
-  - cargo: "Deputada Municipal"
+  - cargo: "Deputado/a Municipal"
     orgao: "Assembleia Municipal de Lisboa"
     junta: "assembleia-municipal"
 biografia: ""

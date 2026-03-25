@@ -69,6 +69,15 @@ collections:
         required: false
         default: ""
 
+      - label: Género gramatical
+        name: genero
+        widget: select
+        options:
+          - { label: "Masculino", value: "m" }
+          - { label: "Feminino", value: "f" }
+          - { label: "Neutro / Não-binário", value: "n" }
+        default: m
+
       - label: Juntas (slugs para filtragem — preencher automaticamente com os valores de Cargos)
         name: juntas
         widget: list
@@ -85,24 +94,16 @@ collections:
             name: cargo
             widget: select
             options:
-              - label: "Vereador (Câmara Municipal)"
-                value: "Vereador"
-              - label: "Vereadora (Câmara Municipal)"
-                value: "Vereadora"
-              - label: "Deputado Municipal (Assembleia Municipal)"
-                value: "Deputado Municipal"
-              - label: "Deputada Municipal (Assembleia Municipal)"
-                value: "Deputada Municipal"
+              - label: "Vereador/a (Câmara Municipal)"
+                value: "Vereador/a"
+              - label: "Deputado/a Municipal (Assembleia Municipal)"
+                value: "Deputado/a Municipal"
               - label: "Membro de Assembleia"
                 value: "Membro de Assembleia"
-              - label: "Membra de Assembleia"
-                value: "Membra de Assembleia"
               - label: "Vogal do Executivo"
                 value: "Vogal do Executivo"
-              - label: "Primeiro Secretário"
-                value: "Primeiro Secretário"
-              - label: "Primeira Secretária"
-                value: "Primeira Secretária"
+              - label: "Primeiro/a Secretário/a"
+                value: "Primeiro/a Secretário/a"
           - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
             name: orgao
             widget: string
