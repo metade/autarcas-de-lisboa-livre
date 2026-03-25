@@ -31,7 +31,8 @@ layout: default
     </div>
   </div>
 
-  {% if content and content != "" %}
+  {% assign _has_content = content | has_content %}
+  {% if _has_content %}
     <div class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 mb-8 prose prose-gray max-w-none prose-a:text-livre-green prose-headings:text-livre-dark">
       {{ content }}
     </div>
