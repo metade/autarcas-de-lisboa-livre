@@ -165,7 +165,7 @@ collections:
     folder: _propostas/camara-municipal
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/camara-municipal/{{slug}}"
+    media_folder: "_propostas/camara-municipal/{{slug}}"
     public_folder: "/propostas/camara-municipal/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -195,7 +195,7 @@ collections:
     folder: _propostas/assembleia-municipal
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/assembleia-municipal/{{slug}}"
+    media_folder: "_propostas/assembleia-municipal/{{slug}}"
     public_folder: "/propostas/assembleia-municipal/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -225,7 +225,7 @@ collections:
     folder: _propostas/alvalade
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/alvalade/{{slug}}"
+    media_folder: "_propostas/alvalade/{{slug}}"
     public_folder: "/propostas/alvalade/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -255,7 +255,7 @@ collections:
     folder: _propostas/areeiro
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/areeiro/{{slug}}"
+    media_folder: "_propostas/areeiro/{{slug}}"
     public_folder: "/propostas/areeiro/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -285,7 +285,7 @@ collections:
     folder: _propostas/arroios
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/arroios/{{slug}}"
+    media_folder: "_propostas/arroios/{{slug}}"
     public_folder: "/propostas/arroios/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -315,7 +315,7 @@ collections:
     folder: _propostas/avenidas-novas
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/avenidas-novas/{{slug}}"
+    media_folder: "_propostas/avenidas-novas/{{slug}}"
     public_folder: "/propostas/avenidas-novas/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -345,7 +345,7 @@ collections:
     folder: _propostas/lumiar
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/lumiar/{{slug}}"
+    media_folder: "_propostas/lumiar/{{slug}}"
     public_folder: "/propostas/lumiar/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -375,7 +375,7 @@ collections:
     folder: _propostas/parque-das-nacoes
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/parque-das-nacoes/{{slug}}"
+    media_folder: "_propostas/parque-das-nacoes/{{slug}}"
     public_folder: "/propostas/parque-das-nacoes/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -405,7 +405,7 @@ collections:
     folder: _propostas/penha-de-franca
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/penha-de-franca/{{slug}}"
+    media_folder: "_propostas/penha-de-franca/{{slug}}"
     public_folder: "/propostas/penha-de-franca/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -435,7 +435,7 @@ collections:
     folder: _propostas/santo-antonio
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/santo-antonio/{{slug}}"
+    media_folder: "_propostas/santo-antonio/{{slug}}"
     public_folder: "/propostas/santo-antonio/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
@@ -465,7 +465,7 @@ collections:
     folder: _propostas/sao-domingos-de-benfica
     create: true
     slug: "{{year}}-{{slug}}"
-    media_folder: "propostas/sao-domingos-de-benfica/{{slug}}"
+    media_folder: "_propostas/sao-domingos-de-benfica/{{slug}}"
     public_folder: "/propostas/sao-domingos-de-benfica/{{slug}}"
     fields:
       - { label: Título, name: titulo, widget: string }
