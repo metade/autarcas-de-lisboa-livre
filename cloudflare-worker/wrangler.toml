@@ -1,0 +1,11 @@
+name = "autarcas-de-lisboa-cms-auth"
+main = "src/index.js"
+compatibility_date = "2023-03-24"
+
+# Secrets are set via `wrangler secret put` — do NOT put them here:
+#   wrangler secret put GITHUB_CLIENT_ID
+#   wrangler secret put GITHUB_CLIENT_SECRET
+#
+# Optional: restrict which domains can use this worker
+# [vars]
+# ALLOWED_DOMAINS = "livre-lisboa.github.io,autarcas.livre.pt"

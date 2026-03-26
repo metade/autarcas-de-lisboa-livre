@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: OWNER/autarcas-de-lisboa  # TODO: replace with actual org/repo
+  repo: metade/autarcas-de-lisboa-livre
   branch: main
-  base_url: https://YOUR-WORKER.workers.dev  # TODO: replace with Cloudflare Worker URL
+  base_url: https://autarcas-de-lisboa-cms-auth.metade.workers.dev
   auth_endpoint: /auth
 
 media_folder: "assets/images/uploads"
