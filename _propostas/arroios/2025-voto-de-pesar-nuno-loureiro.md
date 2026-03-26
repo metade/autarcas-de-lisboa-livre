@@ -1,12 +1,13 @@
 ---
-titulo: "Voto de Pesar pelo falecimento do Professor Nuno Loureiro"
+titulo: Voto de Pesar pelo falecimento do Professor Nuno Loureiro
 tipo: Voto
 data: 2025-12-20
 autarcas:
   - patrick-sinclair
   - pedro-miguel-santos
+  - bernardo-marques-vidal
 estado: Aprovada
-resumo: "Voto de pesar pelo falecimento do físico português Nuno Loureiro, Diretor do Centro de Ciência do Plasma e Fusão do MIT e residente em Arroios."
+resumo: Voto de pesar pelo falecimento do físico português Nuno Loureiro, Diretor do Centro de Ciência do Plasma e Fusão do MIT e residente em Arroios.
 documento_url: /propostas/arroios/2025-voto-de-pesar-nuno-loureiro/documento.pdf
 tags:
   - voto-de-pesar
