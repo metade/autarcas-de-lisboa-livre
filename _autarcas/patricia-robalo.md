@@ -11,7 +11,7 @@ cargos:
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia de Arroios"
     junta: "arroios"
-    suspenso_temporariamente: true
+    ausente_temporariamente: true
     substituido_por: "patrick-sinclair"
 biografia: ""
 contacto_email: ""

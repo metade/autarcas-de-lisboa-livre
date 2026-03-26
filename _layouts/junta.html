@@ -72,13 +72,13 @@ layout: default
       <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {% for autarca in eleitos %}
           {% assign junta_cargo = autarca.cargos | where: "junta", junta_slug | first %}
-          {% unless junta_cargo.suspenso_temporariamente %}
+          {% unless junta_cargo.ausente_temporariamente %}
             {% include autarca-card.html autarca=autarca junta_slug=junta_slug %}
           {% endunless %}
         {% endfor %}
       </div>
       <!-- Suspended members (separate faded row) -->
-      {% capture suspensos_html %}{% for autarca in eleitos %}{% assign junta_cargo = autarca.cargos | where: "junta", junta_slug | first %}{% if junta_cargo.suspenso_temporariamente %}{% include autarca-card.html autarca=autarca junta_slug=junta_slug %}{% endif %}{% endfor %}{% endcapture %}
+      {% capture suspensos_html %}{% for autarca in eleitos %}{% assign junta_cargo = autarca.cargos | where: "junta", junta_slug | first %}{% if junta_cargo.ausente_temporariamente %}{% include autarca-card.html autarca=autarca junta_slug=junta_slug %}{% endif %}{% endfor %}{% endcapture %}
       {% assign suspensos_stripped = suspensos_html | strip %}
       {% if suspensos_stripped != "" %}
         <div class="mt-6 opacity-50">

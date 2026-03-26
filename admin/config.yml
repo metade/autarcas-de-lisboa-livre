@@ -110,8 +110,8 @@ collections:
           - label: Slug da junta (ex. "arroios", "assembleia-municipal")
             name: junta
             widget: string
-          - label: Suspenso/a temporariamente
-            name: suspenso_temporariamente
+          - label: Temporariamente ausente
+            name: ausente_temporariamente
             widget: boolean
             default: false
             required: false

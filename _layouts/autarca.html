@@ -37,8 +37,8 @@ layout: default
                 {% else %}
                   <span class="text-sm text-gray-600">{{ cargo.orgao }}</span>
                 {% endif %}
-                {% if cargo.suspenso_temporariamente %}
-                  <span class="text-xs font-medium px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">{% include gendered.html text="Suspenso/a temporariamente" genero=page.genero %}</span>
+                {% if cargo.ausente_temporariamente %}
+                  <span class="text-xs font-medium px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">Temporariamente ausente</span>
                 {% elsif cargo.temporario %}
                   <span class="text-xs font-medium px-2.5 py-1 bg-blue-50 text-blue-600 border border-blue-200 rounded-full">Em substituição</span>
                 {% endif %}
