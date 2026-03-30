@@ -69,6 +69,27 @@ collections:
         required: false
         default: ""
 
+      - label: LinkedIn (URL completo)
+        name: contacto_linkedin
+        widget: string
+        required: false
+        default: ""
+        pattern: ['^$|^https://www\.linkedin\.com/', 'Deve ser um URL do LinkedIn (ex. https://www.linkedin.com/in/nome)']
+
+      - label: Bluesky (só o @, sem o @)
+        name: contacto_bluesky
+        widget: string
+        required: false
+        default: ""
+        pattern: ['^$|^[a-zA-Z0-9._-]+$', 'Apenas o identificador, sem @ (ex. nome.bsky.social)']
+
+      - label: Facebook (URL completo)
+        name: contacto_facebook
+        widget: string
+        required: false
+        default: ""
+        pattern: ['^$|^https://www\.facebook\.com/', 'Deve ser um URL do Facebook (ex. https://www.facebook.com/nome)']
+
       - label: Género gramatical
         name: genero
         widget: select
