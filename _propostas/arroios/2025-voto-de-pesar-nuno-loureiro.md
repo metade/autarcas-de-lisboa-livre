@@ -10,7 +10,7 @@ estado: Aprovada
 resumo: Voto de pesar pelo falecimento do físico português Nuno Loureiro, Diretor do Centro de Ciência do Plasma e Fusão do MIT e residente em Arroios.
 documento_url: /propostas/arroios/2025-voto-de-pesar-nuno-loureiro/documento.pdf
 tags:
-  - voto-de-pesar
+  - Voto de Pesar
 ---
 
 Faleceu no passado dia 16 de dezembro o Cientista e Professor Nuno Loureiro, físico português de renome internacional, que dedicou a sua carreira ao estudo da física de plasmas e da fusão nuclear, ocupando o cargo de Diretor do Centro de Ciência do Plasma e Fusão do Instituto de Tecnologia de Massachusetts (MIT).

@@ -9,8 +9,8 @@ estado: Aprovada
 resumo: "Moção recomendando ao executivo da Junta de Freguesia de Arroios que clarifique o calendário para instalação de BiciParks e solicite à CML a expansão da rede EMEL na freguesia."
 documento_url: /propostas/arroios/2026-estacionamento-de-bicicletas-em-arroios/documento.pdf
 tags:
-  - mobilidade
-  - bicicletas
+  - Mobilidade
+  - Bicicletas
 ---
 
 **Considerando que:**

@@ -17,6 +17,10 @@ collections:
   propostas:
     output: true
     permalink: /propostas/:path/
+  tags:
+    output: false
+  locations:
+    output: false
 
 defaults:
   - scope:
