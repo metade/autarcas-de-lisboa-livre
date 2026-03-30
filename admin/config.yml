@@ -283,6 +283,8 @@ collections:
     folder: _propostas/camara-municipal
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/camara-municipal/{{slug}}"
     public_folder: "/propostas/camara-municipal/{{slug}}"
     fields:
@@ -326,6 +328,69 @@ collections:
         value_field: nome
         multiple: true
         required: false
+      - &votacao_field
+        label: Resultado da votação
+        name: votacao
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - label: A favor
+            name: a_favor
+            widget: object
+            required: false
+            collapsed: false
+            fields:
+              - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+              - { label: Partidos, name: partidos, widget: string, required: false, default: "", hint: "Ex. L/CDU/PAN/BE" }
+          - label: Contra
+            name: contra
+            widget: object
+            required: false
+            collapsed: false
+            fields:
+              - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+              - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
+          - label: Abstenções
+            name: abstencoes
+            widget: object
+            required: false
+            collapsed: false
+            fields:
+              - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+              - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
+          - label: Votação por pontos
+            name: pontos
+            widget: list
+            required: false
+            collapsed: true
+            label_singular: Ponto
+            fields:
+              - { label: Descrição, name: descricao, widget: string, hint: "Ex. Ponto 1, Ponto 4, Moção final. Deixar Contra e Abstenções em branco para registar unanimidade." }
+              - label: A favor
+                name: a_favor
+                widget: object
+                required: false
+                collapsed: false
+                fields:
+                  - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+                  - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
+              - label: Contra
+                name: contra
+                widget: object
+                required: false
+                collapsed: false
+                fields:
+                  - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+                  - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
+              - label: Abstenções
+                name: abstencoes
+                widget: object
+                required: false
+                collapsed: false
+                fields:
+                  - { label: Votos, name: votos, widget: number, value_type: int, required: false }
+                  - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_assembleia_municipal
@@ -336,6 +401,8 @@ collections:
     folder: _propostas/assembleia-municipal
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/assembleia-municipal/{{slug}}"
     public_folder: "/propostas/assembleia-municipal/{{slug}}"
     fields:
@@ -379,6 +446,7 @@ collections:
         value_field: nome
         multiple: true
         required: false
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_alvalade
@@ -389,6 +457,8 @@ collections:
     folder: _propostas/alvalade
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/alvalade/{{slug}}"
     public_folder: "/propostas/alvalade/{{slug}}"
     fields:
@@ -435,6 +505,7 @@ collections:
         filter:
           field: junta
           value: alvalade
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_areeiro
@@ -445,6 +516,8 @@ collections:
     folder: _propostas/areeiro
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/areeiro/{{slug}}"
     public_folder: "/propostas/areeiro/{{slug}}"
     fields:
@@ -491,6 +564,7 @@ collections:
         filter:
           field: junta
           value: areeiro
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_arroios
@@ -501,6 +575,8 @@ collections:
     folder: _propostas/arroios
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/arroios/{{slug}}"
     public_folder: "/propostas/arroios/{{slug}}"
     fields:
@@ -547,6 +623,7 @@ collections:
         filter:
           field: junta
           value: arroios
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_avenidas_novas
@@ -557,6 +634,8 @@ collections:
     folder: _propostas/avenidas-novas
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/avenidas-novas/{{slug}}"
     public_folder: "/propostas/avenidas-novas/{{slug}}"
     fields:
@@ -603,6 +682,7 @@ collections:
         filter:
           field: junta
           value: avenidas-novas
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_lumiar
@@ -613,6 +693,8 @@ collections:
     folder: _propostas/lumiar
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/lumiar/{{slug}}"
     public_folder: "/propostas/lumiar/{{slug}}"
     fields:
@@ -659,6 +741,7 @@ collections:
         filter:
           field: junta
           value: lumiar
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_parque_das_nacoes
@@ -669,6 +752,8 @@ collections:
     folder: _propostas/parque-das-nacoes
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/parque-das-nacoes/{{slug}}"
     public_folder: "/propostas/parque-das-nacoes/{{slug}}"
     fields:
@@ -715,6 +800,7 @@ collections:
         filter:
           field: junta
           value: parque-das-nacoes
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_penha_de_franca
@@ -725,6 +811,8 @@ collections:
     folder: _propostas/penha-de-franca
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/penha-de-franca/{{slug}}"
     public_folder: "/propostas/penha-de-franca/{{slug}}"
     fields:
@@ -771,6 +859,7 @@ collections:
         filter:
           field: junta
           value: penha-de-franca
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_santo_antonio
@@ -781,6 +870,8 @@ collections:
     folder: _propostas/santo-antonio
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/santo-antonio/{{slug}}"
     public_folder: "/propostas/santo-antonio/{{slug}}"
     fields:
@@ -827,6 +918,7 @@ collections:
         filter:
           field: junta
           value: santo-antonio
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   - name: propostas_sao_domingos_de_benfica
@@ -837,6 +929,8 @@ collections:
     folder: _propostas/sao-domingos-de-benfica
     create: true
     slug: "{{year}}-{{slug}}"
+    editor:
+      preview: false
     media_folder: "_propostas/sao-domingos-de-benfica/{{slug}}"
     public_folder: "/propostas/sao-domingos-de-benfica/{{slug}}"
     fields:
@@ -883,6 +977,7 @@ collections:
         filter:
           field: junta
           value: sao-domingos-de-benfica
+      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   # ── PÁGINAS ESTÁTICAS ──────────────────────────────────────────────────────

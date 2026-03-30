@@ -7,6 +7,8 @@ autarcas:
   - pedro-miguel-santos
   - bernardo-marques-vidal
 estado: Aprovada
+votacao:
+  a_favor: {}
 resumo: Voto de pesar pelo falecimento do físico português Nuno Loureiro, Diretor do Centro de Ciência do Plasma e Fusão do MIT e residente em Arroios.
 documento_url: /propostas/arroios/2025-voto-de-pesar-nuno-loureiro/documento.pdf
 tags:

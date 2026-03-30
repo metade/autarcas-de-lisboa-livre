@@ -95,6 +95,62 @@ layout: default
         {% endfor %}
       </div>
     {% endif %}
+
+    {% if page.votacao %}
+      <div class="mt-5 pt-5 border-t border-gray-100">
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Resultado da votação</h2>
+
+        {% if page.votacao.pontos and page.votacao.pontos.size > 0 %}
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-left text-xs text-gray-400 border-b border-gray-100">
+                  <th class="pb-1 pr-4 font-medium w-24">Ponto</th>
+                  <th class="pb-1 px-2 font-medium">A favor</th>
+                  <th class="pb-1 px-2 font-medium">Contra</th>
+                  <th class="pb-1 px-2 font-medium">Abstenções</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ponto in page.votacao.pontos %}
+                  <tr class="border-b border-gray-50 align-top">
+                    <td class="py-2 pr-4 text-gray-500 text-xs font-medium whitespace-nowrap">{{ ponto.descricao }}</td>
+                    {% if ponto.a_favor and ponto.contra == nil and ponto.abstencoes == nil %}
+                      <td colspan="3" class="py-2 px-2 text-gray-500 italic">Aprovada por unanimidade.</td>
+                    {% else %}
+                      <td class="py-2 px-2">{% unless ponto.a_favor.votos == nil %}<span class="font-bold text-gray-800">{{ ponto.a_favor.votos }}</span>{% endunless %}{% if ponto.a_favor.partidos and ponto.a_favor.partidos != "" %}<span class="block text-xs text-gray-400">{{ ponto.a_favor.partidos }}</span>{% endif %}</td>
+                      <td class="py-2 px-2">{% unless ponto.contra.votos == nil %}<span class="font-bold text-gray-800">{{ ponto.contra.votos }}</span>{% endunless %}{% if ponto.contra.partidos and ponto.contra.partidos != "" %}<span class="block text-xs text-gray-400">{{ ponto.contra.partidos }}</span>{% endif %}</td>
+                      <td class="py-2 px-2">{% unless ponto.abstencoes.votos == nil %}<span class="font-bold text-gray-800">{{ ponto.abstencoes.votos }}</span>{% endunless %}{% if ponto.abstencoes.partidos and ponto.abstencoes.partidos != "" %}<span class="block text-xs text-gray-400">{{ ponto.abstencoes.partidos }}</span>{% endif %}</td>
+                    {% endif %}
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% elsif page.votacao.a_favor and page.votacao.contra == nil and page.votacao.abstencoes == nil %}
+          <p class="text-sm text-gray-500 italic">Aprovada por unanimidade.</p>
+        {% elsif page.votacao.a_favor or page.votacao.contra or page.votacao.abstencoes %}
+          <div class="grid grid-cols-3 gap-3 text-sm">
+            <div>
+              <div class="text-xs text-gray-400 mb-1">A favor</div>
+              {% unless page.votacao.a_favor.votos == nil %}<div class="text-2xl font-bold text-gray-800">{{ page.votacao.a_favor.votos }}</div>{% endunless %}
+              {% if page.votacao.a_favor.partidos and page.votacao.a_favor.partidos != "" %}<div class="text-xs text-gray-400 mt-0.5">{{ page.votacao.a_favor.partidos }}</div>{% endif %}
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">Contra</div>
+              {% unless page.votacao.contra.votos == nil %}<div class="text-2xl font-bold text-gray-800">{{ page.votacao.contra.votos }}</div>{% endunless %}
+              {% if page.votacao.contra.partidos and page.votacao.contra.partidos != "" %}<div class="text-xs text-gray-400 mt-0.5">{{ page.votacao.contra.partidos }}</div>{% endif %}
+            </div>
+            <div>
+              <div class="text-xs text-gray-400 mb-1">Abstenções</div>
+              {% unless page.votacao.abstencoes.votos == nil %}<div class="text-2xl font-bold text-gray-800">{{ page.votacao.abstencoes.votos }}</div>{% endunless %}
+              {% if page.votacao.abstencoes.partidos and page.votacao.abstencoes.partidos != "" %}<div class="text-xs text-gray-400 mt-0.5">{{ page.votacao.abstencoes.partidos }}</div>{% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
   </div>
 
   <!-- Full text -->
