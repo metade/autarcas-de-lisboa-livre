@@ -224,6 +224,8 @@ collections:
   - name: propostas_camara_municipal
     label: "Propostas — Câmara Municipal"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/camara-municipal
     create: true
     slug: "{{year}}-{{slug}}"
@@ -258,6 +260,8 @@ collections:
   - name: propostas_assembleia_municipal
     label: "Propostas — Assembleia Municipal"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/assembleia-municipal
     create: true
     slug: "{{year}}-{{slug}}"
@@ -292,6 +296,8 @@ collections:
   - name: propostas_alvalade
     label: "Propostas — Alvalade"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/alvalade
     create: true
     slug: "{{year}}-{{slug}}"
@@ -326,6 +332,8 @@ collections:
   - name: propostas_areeiro
     label: "Propostas — Areeiro"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/areeiro
     create: true
     slug: "{{year}}-{{slug}}"
@@ -360,6 +368,8 @@ collections:
   - name: propostas_arroios
     label: "Propostas — Arroios"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/arroios
     create: true
     slug: "{{year}}-{{slug}}"
@@ -394,6 +404,8 @@ collections:
   - name: propostas_avenidas_novas
     label: "Propostas — Avenidas Novas"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/avenidas-novas
     create: true
     slug: "{{year}}-{{slug}}"
@@ -428,6 +440,8 @@ collections:
   - name: propostas_lumiar
     label: "Propostas — Lumiar"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/lumiar
     create: true
     slug: "{{year}}-{{slug}}"
@@ -462,6 +476,8 @@ collections:
   - name: propostas_parque_das_nacoes
     label: "Propostas — Parque das Nações"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/parque-das-nacoes
     create: true
     slug: "{{year}}-{{slug}}"
@@ -496,6 +512,8 @@ collections:
   - name: propostas_penha_de_franca
     label: "Propostas — Penha de França"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/penha-de-franca
     create: true
     slug: "{{year}}-{{slug}}"
@@ -530,6 +548,8 @@ collections:
   - name: propostas_santo_antonio
     label: "Propostas — Santo António"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/santo-antonio
     create: true
     slug: "{{year}}-{{slug}}"
@@ -564,6 +584,8 @@ collections:
   - name: propostas_sao_domingos_de_benfica
     label: "Propostas — São Domingos de Benfica"
     label_singular: Proposta
+    identifier_field: titulo
+    summary: "{{titulo}} ({{data}})"
     folder: _propostas/sao-domingos-de-benfica
     create: true
     slug: "{{year}}-{{slug}}"
