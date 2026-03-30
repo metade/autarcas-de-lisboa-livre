@@ -31,8 +31,10 @@ For a one-shot build: `npm run build:css && bundle exec jekyll build`
 _autarcas/       One .md per elected official (16 files)
 _juntas/         One .md per parish assembly (9 files — Assembleias de Freguesia only)
 _propostas/      Per-organ subfolders: _propostas/{organ}/{year}-{slug}.md + co-located PDFs
+_tags/           Controlled tag vocabulary (output: false); each file has a `nome` field
+_locations/      Controlled location vocabulary (output: false); each file has `nome` + `junta` fields
 _pages/          Static pages (registered as a Jekyll collection so Jekyll outputs them)
-_layouts/        default, autarca, junta, proposta, page
+_layouts/        default, autarca, junta, proposta, propostas_organ, page
 _includes/       head, nav, footer, autarca-card, proposta-card
 _plugins/        date_filter.rb — date_pt Liquid filter for Portuguese dates
 _data/           pt.yml — Portuguese month names
@@ -41,6 +43,8 @@ assets/js/       filter.js — vanilla JS client-side filtering for proposals
 admin/           Sveltia CMS entry (index.html) and config (config.yml)
 cloudflare-worker/  OAuth proxy source (src/index.js, wrangler.toml)
 ```
+
+> **Tailwind note:** After adding new utility classes to templates, rerun `npm run build:css` so they are included in the compiled output. Classes not present at build time will be silently dropped.
 
 ## Site Structure
 
@@ -54,6 +58,7 @@ cloudflare-worker/  OAuth proxy source (src/index.js, wrangler.toml)
 | `/autarcas/` | `_pages/autarcas.md` |
 | `/autarcas/:slug/` | `_autarcas/*.md` |
 | `/propostas/` | `_pages/propostas.md` — filterable listing |
+| `/propostas/:organ/` | `_pages/propostas-{organ}.md` — per-organ listing (uses `propostas_organ` layout) |
 | `/propostas/:organ/:slug/` | `_propostas/{organ}/*.md` |
 | `/sobre/` | `_pages/sobre.md` |
 | `/admin/` | Sveltia CMS interface |
@@ -107,6 +112,9 @@ Key fields: `nome`, `slug`, `tipo`, `descricao`, `foto_junta`
 
 Social link fields (all optional, empty string if unused): `website_oficial`, `facebook`, `x`, `instagram`, `youtube`
 
+### Autarca social fields
+Optional contact/social fields on `_autarcas/*.md`: `contacto_email`, `contacto_twitter`, `contacto_instagram`, `contacto_linkedin` (full URL), `contacto_bluesky` (handle only), `contacto_facebook` (full URL). All default to empty string.
+
 ### Propostas (`_propostas/{organ}/*.md`)
 Files live in per-organ subfolders (e.g. `_propostas/arroios/2026-foo.md`). PDFs are co-located alongside the `.md` file and automatically copied to the output. The `junta` frontmatter field is auto-set by Jekyll defaults based on folder path.
 
@@ -115,8 +123,10 @@ Key fields:
 - `autarcas` — list of autarca slugs (for cross-linking and filtering)
 - `estado` — `Em análise | Aprovada | Rejeitada | Retirada`
 - `tipo` — `Proposta | Moção | Requerimento | Voto`
+- `tags` — list of tag names; values must match the `nome` field of an entry in `_tags/`
+- `localizacoes` — list of location names; values must match the `nome` field of an entry in `_locations/`
 
-The CMS is configured with 11 per-organ collections (Câmara Municipal, Assembleia Municipal, + 9 junta-level organs).
+The CMS is configured with 11 per-organ collections (Câmara Municipal, Assembleia Municipal, + 9 junta-level organs). All slug/relation fields use CMS relation widgets — editors pick from dropdowns rather than typing slugs by hand. The `localizacoes` relation widget is filtered by junta in each per-organ collection.
 
 ## Liquid Relationships
 
