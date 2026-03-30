@@ -78,13 +78,14 @@ collections:
           - { label: "Neutro / Não-binário", value: "n" }
         default: m
 
-      - label: Juntas (slugs para filtragem — preencher automaticamente com os valores de Cargos)
+      - label: Juntas (para filtragem — preencher com os mesmos valores que em Cargos)
         name: juntas
-        widget: list
-        field:
-          label: Slug da junta
-          name: junta_slug
-          widget: string
+        widget: relation
+        collection: juntas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: slug
+        multiple: true
 
       - label: Cargos
         name: cargos
@@ -107,9 +108,13 @@ collections:
           - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
             name: orgao
             widget: string
-          - label: Slug da junta (ex. "arroios", "assembleia-municipal")
+          - label: Junta
             name: junta
-            widget: string
+            widget: relation
+            collection: juntas
+            display_fields: [nome]
+            search_fields: [nome]
+            value_field: slug
           - label: Temporariamente ausente
             name: ausente_temporariamente
             widget: boolean
@@ -120,13 +125,21 @@ collections:
             widget: boolean
             default: false
             required: false
-          - label: Substitui (slug do autarca substituído/a)
+          - label: Substitui
             name: substitui
-            widget: string
+            widget: relation
+            collection: autarcas
+            display_fields: [nome]
+            search_fields: [nome]
+            value_field: "{{slug}}"
             required: false
-          - label: Substituído/a por (slug do substituto/a)
+          - label: Substituído/a por
             name: substituido_por
-            widget: string
+            widget: relation
+            collection: autarcas
+            display_fields: [nome]
+            search_fields: [nome]
+            value_field: "{{slug}}"
             required: false
 
       - label: Texto adicional (bio alargada)
@@ -224,10 +237,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -254,10 +271,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -284,10 +305,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -314,10 +339,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -344,10 +373,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -374,10 +407,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -404,10 +441,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -434,10 +475,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -464,10 +509,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -494,10 +543,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
@@ -524,10 +577,14 @@ collections:
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários (slugs dos autarcas)
+      - label: Autores / Signatários
         name: autarcas
-        widget: list
-        field: { label: Slug do autarca, name: autarca_slug, widget: string }
+        widget: relation
+        collection: autarcas
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: "{{slug}}"
+        multiple: true
       - label: Estado
         name: estado
         widget: select
