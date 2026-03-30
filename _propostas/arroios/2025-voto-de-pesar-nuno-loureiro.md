@@ -1,5 +1,5 @@
 ---
-titulo: Voto de Pesar pelo falecimento do Professor Nuno Loureiro
+title: Voto de Pesar pelo falecimento do Professor Nuno Loureiro
 tipo: Voto
 data: 2025-12-20
 autarcas:

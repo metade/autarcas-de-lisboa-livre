@@ -1,5 +1,5 @@
 ---
-titulo: Estacionamento de Bicicletas em Arroios
+title: Estacionamento de Bicicletas em Arroios
 tipo: Moção
 data: 2026-01-31
 autarcas:

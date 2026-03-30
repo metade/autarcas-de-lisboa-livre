@@ -278,8 +278,8 @@ collections:
   - name: propostas_camara_municipal
     label: "Propostas — Câmara Municipal"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/camara-municipal
     create: true
     slug: "{{year}}-{{slug}}"
@@ -288,7 +288,7 @@ collections:
     media_folder: "_propostas/camara-municipal/{{slug}}"
     public_folder: "/propostas/camara-municipal/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -396,8 +396,8 @@ collections:
   - name: propostas_assembleia_municipal
     label: "Propostas — Assembleia Municipal"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/assembleia-municipal
     create: true
     slug: "{{year}}-{{slug}}"
@@ -406,7 +406,7 @@ collections:
     media_folder: "_propostas/assembleia-municipal/{{slug}}"
     public_folder: "/propostas/assembleia-municipal/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -452,8 +452,8 @@ collections:
   - name: propostas_alvalade
     label: "Propostas — Alvalade"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/alvalade
     create: true
     slug: "{{year}}-{{slug}}"
@@ -462,7 +462,7 @@ collections:
     media_folder: "_propostas/alvalade/{{slug}}"
     public_folder: "/propostas/alvalade/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -511,8 +511,8 @@ collections:
   - name: propostas_areeiro
     label: "Propostas — Areeiro"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/areeiro
     create: true
     slug: "{{year}}-{{slug}}"
@@ -521,7 +521,7 @@ collections:
     media_folder: "_propostas/areeiro/{{slug}}"
     public_folder: "/propostas/areeiro/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -570,8 +570,8 @@ collections:
   - name: propostas_arroios
     label: "Propostas — Arroios"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/arroios
     create: true
     slug: "{{year}}-{{slug}}"
@@ -580,7 +580,7 @@ collections:
     media_folder: "_propostas/arroios/{{slug}}"
     public_folder: "/propostas/arroios/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -629,8 +629,8 @@ collections:
   - name: propostas_avenidas_novas
     label: "Propostas — Avenidas Novas"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/avenidas-novas
     create: true
     slug: "{{year}}-{{slug}}"
@@ -639,7 +639,7 @@ collections:
     media_folder: "_propostas/avenidas-novas/{{slug}}"
     public_folder: "/propostas/avenidas-novas/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -688,8 +688,8 @@ collections:
   - name: propostas_lumiar
     label: "Propostas — Lumiar"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/lumiar
     create: true
     slug: "{{year}}-{{slug}}"
@@ -698,7 +698,7 @@ collections:
     media_folder: "_propostas/lumiar/{{slug}}"
     public_folder: "/propostas/lumiar/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -747,8 +747,8 @@ collections:
   - name: propostas_parque_das_nacoes
     label: "Propostas — Parque das Nações"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/parque-das-nacoes
     create: true
     slug: "{{year}}-{{slug}}"
@@ -757,7 +757,7 @@ collections:
     media_folder: "_propostas/parque-das-nacoes/{{slug}}"
     public_folder: "/propostas/parque-das-nacoes/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -806,8 +806,8 @@ collections:
   - name: propostas_penha_de_franca
     label: "Propostas — Penha de França"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/penha-de-franca
     create: true
     slug: "{{year}}-{{slug}}"
@@ -816,7 +816,7 @@ collections:
     media_folder: "_propostas/penha-de-franca/{{slug}}"
     public_folder: "/propostas/penha-de-franca/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -865,8 +865,8 @@ collections:
   - name: propostas_santo_antonio
     label: "Propostas — Santo António"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/santo-antonio
     create: true
     slug: "{{year}}-{{slug}}"
@@ -875,7 +875,7 @@ collections:
     media_folder: "_propostas/santo-antonio/{{slug}}"
     public_folder: "/propostas/santo-antonio/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
@@ -924,8 +924,8 @@ collections:
   - name: propostas_sao_domingos_de_benfica
     label: "Propostas — São Domingos de Benfica"
     label_singular: Proposta
-    identifier_field: titulo
-    summary: "{{titulo}} ({{data}})"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     folder: _propostas/sao-domingos-de-benfica
     create: true
     slug: "{{year}}-{{slug}}"
@@ -934,7 +934,7 @@ collections:
     media_folder: "_propostas/sao-domingos-de-benfica/{{slug}}"
     public_folder: "/propostas/sao-domingos-de-benfica/{{slug}}"
     fields:
-      - { label: Título, name: titulo, widget: string }
+      - { label: Título, name: title, widget: string }
       - label: Tipo
         name: tipo
         widget: select
