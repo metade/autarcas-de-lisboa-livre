@@ -34,22 +34,22 @@ title: "Início"
     {% assign total_autarcas = site.autarcas | where: "ativo", true | size %}
     {% assign total_propostas = site.propostas | size %}
     {% assign total_juntas = site.juntas | size %}
-    <div class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm">
+    <a href="{{ '/camara-municipal/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
       <p class="text-3xl font-bold text-livre-green">1</p>
       <p class="text-sm text-gray-600 mt-1">Vereador</p>
-    </div>
-    <div class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm">
+    </a>
+    <a href="{{ '/assembleia-municipal/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
       <p class="text-3xl font-bold text-livre-green">2</p>
       <p class="text-sm text-gray-600 mt-1">Deputados Municipais</p>
-    </div>
-    <div class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm">
+    </a>
+    <a href="{{ '/juntas/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
       <p class="text-3xl font-bold text-livre-green">{{ total_juntas }}</p>
       <p class="text-sm text-gray-600 mt-1">Freguesias</p>
-    </div>
-    <div class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm">
+    </a>
+    <a href="{{ '/propostas/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
       <p class="text-3xl font-bold text-livre-green">{{ total_propostas }}</p>
       <p class="text-sm text-gray-600 mt-1">Propostas</p>
-    </div>
+    </a>
   </div>
 </div>
 
