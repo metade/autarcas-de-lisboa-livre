@@ -2,7 +2,7 @@
 
 Jekyll website for the Livre party's elected officials (autarcas) in Lisbon. Hosted on GitHub Pages, with Sveltia CMS for content editing.
 
-Deployed at: `https://metade.github.io/autarcas-de-lisboa-livre`
+Deployed at: `https://autarcas-lisboa-livre.metade.org`
 
 ## Stack
 
