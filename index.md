@@ -5,25 +5,28 @@ title: "Início"
 <!-- Hero -->
 <div class="bg-gradient-to-br from-livre-dark to-[#1e2600] text-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
-    <div class="max-w-2xl">
-      <div class="inline-flex items-center gap-2 bg-livre-green/20 text-livre-green px-3 py-1 rounded-full text-sm font-medium mb-6">
-        <span class="w-2 h-2 rounded-full bg-livre-green"></span>
-        Mandato 2025–2029
+    <div class="flex items-center justify-between gap-8">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-livre-green/20 text-livre-green px-3 py-1 rounded-full text-sm font-medium mb-6">
+          <span class="w-2 h-2 rounded-full bg-livre-green"></span>
+          Mandato 2025–2029
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+          Autarcas do Livre<br>em Lisboa
+        </h1>
+        <p class="text-gray-300 text-lg mb-8">
+          Acompanha o trabalho dos eleitos e eleitas do Livre na Câmara Municipal, Assembleia Municipal e nas Juntas de Freguesia de Lisboa.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="{{ '/autarcas/' | relative_url }}" class="inline-flex items-center gap-2 bg-livre-green hover:bg-livre-green-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
+            Ver autarcas
+          </a>
+          <a href="{{ '/propostas/' | relative_url }}" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
+            Ver propostas
+          </a>
+        </div>
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
-        Autarcas do Livre<br>em Lisboa
-      </h1>
-      <p class="text-gray-300 text-lg mb-8">
-        Acompanha o trabalho dos eleitos e eleitas do Livre na Câmara Municipal, Assembleia Municipal e nas Juntas de Freguesia de Lisboa.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="{{ '/autarcas/' | relative_url }}" class="inline-flex items-center gap-2 bg-livre-green hover:bg-livre-green-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
-          Ver autarcas
-        </a>
-        <a href="{{ '/propostas/' | relative_url }}" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
-          Ver propostas
-        </a>
-      </div>
+      <img src="{{ '/assets/images/livre.svg' | relative_url }}" alt="Livre" class="hidden md:block w-72 h-72 shrink-0 opacity-90">
     </div>
   </div>
 </div>
