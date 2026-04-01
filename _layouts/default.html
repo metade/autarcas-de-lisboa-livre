@@ -1,13 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ site.lang | default: 'pt' }}">
-<head>
-  {% include head.html %}
-</head>
-<body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
-  {% include nav.html %}
-  <main class="flex-1">
-    {{ content }}
-  </main>
-  {% include footer.html %}
-</body>
+    <head>
+        {% include head.html %}
+    </head>
+    <body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col">
+        {% include nav.html %}
+        <main class="flex-1">{{ content }}</main>
+        {% include footer.html %}
+    </body>
 </html>

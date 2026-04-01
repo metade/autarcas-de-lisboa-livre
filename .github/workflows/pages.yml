@@ -40,7 +40,7 @@ jobs:
           bundler-cache: true
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build --baseurl /autarcas-de-lisboa-livre
+        run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
 
