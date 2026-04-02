@@ -149,7 +149,7 @@ Fully configured and deployed:
 
 - `repo: metade/autarcas-de-lisboa-livre`
 - `base_url: https://autarcas-de-lisboa-cms-auth.metade.workers.dev`
-- GitHub OAuth App callback: `https://autarcas-de-lisboa-cms-auth.metade.workers.dev/callback`
+- GitHub App callback: `https://autarcas-de-lisboa-cms-auth.metade.workers.dev/callback`
 - Worker secrets (`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`) stored in Wrangler, not committed
 - Deploy the worker: `cd cloudflare-worker && wrangler deploy`
 - Grant write access to the GitHub repo for anyone who needs CMS access
