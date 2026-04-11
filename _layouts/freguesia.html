@@ -217,8 +217,7 @@ site.municipios | where: "slug", page.municipio | first %}
     {% endif %}
 
     <!-- Eleitos neste órgão -->
-    {% assign eleitos = site.autarcas | where_exp: "a", "a.freguesias contains
-    freguesia_slug" | where: "ativo", true %} {% if eleitos.size > 0 %}
+    {% assign eleitos = site.autarcas | where_exp: "a", "a._cargo_freguesias contains freguesia_slug" | where: "ativo", true %} {% if eleitos.size > 0 %}
     <div class="mb-10">
         <h2 class="text-xl font-bold text-livre-dark mb-5">Eleitos</h2>
         <!-- Active members -->

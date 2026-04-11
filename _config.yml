@@ -13,7 +13,7 @@ collections:
     permalink: /municipios/:slug/
   autarcas:
     output: true
-    permalink: /municipios/:municipio/autarcas/:slug/
+    permalink: /autarcas/:slug/
   freguesias:
     output: true
     permalink: /municipios/:municipio/freguesias/:slug/

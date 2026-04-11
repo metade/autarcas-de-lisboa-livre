@@ -67,7 +67,7 @@ layout: default
         <a href="{{ camara_page.url | relative_url }}" class="group block bg-white rounded-xl border border-gray-200 hover:border-livre-green hover:shadow-md transition-all p-5">
           <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-livre-green-light text-livre-green-dark mb-2 inline-block">Câmara Municipal</span>
           <p class="font-semibold text-gray-900 group-hover:text-livre-green transition-colors">{{ camara_page.nome }}</p>
-          {% assign camara_eleitos = site.autarcas | where_exp: "a", "a.freguesias contains 'camara-municipal'" | where: "municipio", page.slug | where: "ativo", true %}
+          {% assign camara_eleitos = site.autarcas | where_exp: "a", "a._cargo_freguesias contains 'camara-municipal'" | where_exp: "a", "a._cargo_municipios contains page.slug" | where: "ativo", true %}
           {% if camara_eleitos.size > 0 %}
             <p class="text-sm text-gray-500 mt-1">{{ camara_eleitos.size }} eleito{% if camara_eleitos.size != 1 %}s{% endif %}</p>
           {% endif %}
@@ -77,7 +77,7 @@ layout: default
         <a href="{{ assembleia_page.url | relative_url }}" class="group block bg-white rounded-xl border border-gray-200 hover:border-livre-green hover:shadow-md transition-all p-5">
           <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-livre-green-light text-livre-green-dark mb-2 inline-block">Assembleia Municipal</span>
           <p class="font-semibold text-gray-900 group-hover:text-livre-green transition-colors">{{ assembleia_page.nome }}</p>
-          {% assign assembleia_eleitos = site.autarcas | where_exp: "a", "a.freguesias contains 'assembleia-municipal'" | where: "municipio", page.slug | where: "ativo", true %}
+          {% assign assembleia_eleitos = site.autarcas | where_exp: "a", "a._cargo_freguesias contains 'assembleia-municipal'" | where_exp: "a", "a._cargo_municipios contains page.slug" | where: "ativo", true %}
           {% if assembleia_eleitos.size > 0 %}
             <p class="text-sm text-gray-500 mt-1">{{ assembleia_eleitos.size }} eleito{% if assembleia_eleitos.size != 1 %}s{% endif %}</p>
           {% endif %}
@@ -95,7 +95,7 @@ layout: default
         {% for freguesia in municipio_freguesias %}
           <a href="{{ freguesia.url | relative_url }}" class="group block bg-white rounded-xl border border-gray-200 hover:border-livre-green hover:shadow-md transition-all p-5">
             <p class="font-semibold text-gray-900 group-hover:text-livre-green transition-colors">{{ freguesia.nome }}</p>
-            {% assign eleitos = site.autarcas | where_exp: "a", "a.freguesias contains freguesia.slug" | where: "ativo", true %}
+            {% assign eleitos = site.autarcas | where_exp: "a", "a._cargo_freguesias contains freguesia.slug" | where: "ativo", true %}
             <p class="text-sm text-gray-500 mt-1">
               {% if eleitos.size == 1 %}1 eleito{% else %}{{ eleitos.size }} eleitos{% endif %}
             </p>
@@ -106,7 +106,7 @@ layout: default
   {% endif %}
 
   <!-- Autarcas -->
-  {% assign municipio_autarcas = site.autarcas | where: "municipio", page.slug | where: "ativo", true | sort: "nome" %}
+  {% assign municipio_autarcas = site.autarcas | where_exp: "a", "a._cargo_municipios contains page.slug" | where: "ativo", true | sort: "nome" %}
   {% if municipio_autarcas.size > 0 %}
     <div class="mb-10">
       <h2 class="text-xl font-bold text-livre-dark mb-5">Eleitos e Eleitas</h2>

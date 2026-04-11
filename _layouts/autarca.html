@@ -7,10 +7,13 @@ layout: default
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
     Todos os autarcas
   </a>
-  {% if page.municipio %}
-    <div class="mb-2 text-xs text-gray-400">
-      {% assign municipio_page = site.municipios | where: "slug", page.municipio | first %}
-      {% if municipio_page %}<a href="{{ municipio_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ municipio_page.nome }}</a>{% endif %}
+  {% assign cargo_municipios = page.cargos | map: "municipio" | uniq %}
+  {% if cargo_municipios.size > 0 %}
+    <div class="mb-2 text-xs text-gray-400 flex gap-2">
+      {% for m_slug in cargo_municipios %}
+        {% assign municipio_page = site.municipios | where: "slug", m_slug | first %}
+        {% if municipio_page %}<a href="{{ municipio_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ municipio_page.nome }}</a>{% endif %}
+      {% endfor %}
     </div>
   {% endif %}
 
@@ -41,7 +44,7 @@ layout: default
                 {% if freguesia_page %}
                   <a href="{{ freguesia_page.url | relative_url }}" class="text-sm text-gray-600 hover:text-livre-green transition-colors">{{ cargo.orgao }}</a>
                 {% else %}
-                  {% assign _perm = "/municipios/" | append: page.municipio | append: "/" | append: cargo.freguesia | append: "/" %}
+                  {% assign _perm = "/municipios/" | append: cargo.municipio | append: "/" | append: cargo.freguesia | append: "/" %}
                   {% assign special_page = site.pages | where: "permalink", _perm | first %}
                   {% if special_page %}
                     <a href="{{ special_page.url | relative_url }}" class="text-sm text-gray-600 hover:text-livre-green transition-colors">{{ cargo.orgao }}</a>

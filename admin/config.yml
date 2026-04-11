@@ -155,24 +155,6 @@ collections:
           - { label: "Neutro / Não-binário", value: "n" }
         default: m
 
-      - label: Município
-        name: municipio
-        widget: relation
-        collection: municipios
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: slug
-
-      - label: Freguesias (para filtragem — preencher com os mesmos valores que em Cargos)
-        name: freguesias
-        widget: relation
-        collection: freguesias
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: slug
-        multiple: true
-        hint: "Para câmara-municipal e assembleia-municipal, adicionar manualmente após guardar."
-
       - label: Cargos
         name: cargos
         widget: list
@@ -194,6 +176,13 @@ collections:
           - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
             name: orgao
             widget: string
+          - label: Município
+            name: municipio
+            widget: relation
+            collection: municipios
+            display_fields: [nome]
+            search_fields: [nome]
+            value_field: slug
           - label: Freguesia / Órgão
             name: freguesia
             widget: relation

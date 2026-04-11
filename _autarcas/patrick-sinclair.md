@@ -8,13 +8,11 @@ contacto_email: ''
 contacto_twitter: ''
 contacto_instagram: ''
 genero: m
-municipio: lisboa
-freguesias:
-  - arroios
 cargos:
   - cargo: Membro de Assembleia
     orgao: Assembleia de Freguesia de Arroios
     freguesia: arroios
+    municipio: lisboa
     temporario: true
     substitui: patricia-robalo
     substituido_por: ''
