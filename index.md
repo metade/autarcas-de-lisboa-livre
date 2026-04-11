@@ -81,7 +81,7 @@ title: "Início"
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {% assign municipios_sorted = site.municipios | sort: "nome" %}
       {% for municipio in municipios_sorted %}
-        {% assign mun_autarcas = site.autarcas | where: "municipio", municipio.slug | where: "ativo", true %}
+        {% assign mun_autarcas = site.autarcas | where_exp: "a", "a._cargo_municipios contains municipio.slug" | where: "ativo", true %}
         <a href="{{ municipio.url | relative_url }}" class="group block bg-gray-50 hover:bg-livre-green-light border border-gray-200 hover:border-livre-green rounded-xl p-4 transition-all">
           <p class="font-semibold text-gray-800 group-hover:text-livre-green transition-colors">{{ municipio.nome }}</p>
           <p class="text-xs text-gray-500 mt-1">{{ mun_autarcas.size }} eleito{% if mun_autarcas.size != 1 %}s{% endif %}</p>
