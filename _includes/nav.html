@@ -3,19 +3,13 @@
     <div class="flex items-center justify-between h-16">
       <a href="{{ '/' | relative_url }}" class="flex items-center gap-2 font-bold text-livre-dark hover:text-livre-green transition-colors">
         <img src="{{ '/assets/images/livre.svg' | relative_url }}" alt="Livre" class="h-8 w-8">
-        <span class="text-sm font-semibold leading-tight">Autarcas de Lisboa</span>
+        <span class="text-sm font-semibold leading-tight">Autarcas do Livre</span>
       </a>
 
       <!-- Desktop nav -->
       <div class="hidden md:flex items-center gap-1">
-        <a href="{{ '/camara-municipal/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
-          Câmara Municipal
-        </a>
-        <a href="{{ '/assembleia-municipal/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
-          Assembleia Municipal
-        </a>
-        <a href="{{ '/juntas/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
-          Juntas de Freguesia
+        <a href="{{ '/municipios/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
+          Municípios
         </a>
         <a href="{{ '/autarcas/' | relative_url }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md transition-colors">
           Autarcas
@@ -35,9 +29,7 @@
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-1">
-      <a href="{{ '/camara-municipal/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Câmara Municipal</a>
-      <a href="{{ '/assembleia-municipal/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Assembleia Municipal</a>
-      <a href="{{ '/juntas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Juntas de Freguesia</a>
+      <a href="{{ '/municipios/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Municípios</a>
       <a href="{{ '/autarcas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Autarcas</a>
       <a href="{{ '/propostas/' | relative_url }}" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-livre-green hover:bg-livre-green-light rounded-md">Propostas</a>
     </div>

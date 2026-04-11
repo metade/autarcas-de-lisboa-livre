@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: f
-juntas:
+municipio: lisboa
+freguesias:
   - areeiro
 cargos:
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia do Areeiro"
-    junta: "areeiro"
+    freguesia: "areeiro"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

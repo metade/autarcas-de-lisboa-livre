@@ -12,14 +12,14 @@ title: "Início"
           Mandato 2025–2029
         </div>
         <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
-          Autarcas do Livre<br>em Lisboa
+          Autarcas do Livre
         </h1>
         <p class="text-gray-300 text-lg mb-8">
-          Acompanha o trabalho dos eleitos e eleitas do Livre na Câmara Municipal, Assembleia Municipal e nas Juntas de Freguesia de Lisboa.
+          Acompanha o trabalho dos eleitos e eleitas do Livre nas câmaras municipais, assembleias municipais e assembleias de freguesia em todo o país.
         </p>
         <div class="flex flex-wrap gap-3">
-          <a href="{{ '/autarcas/' | relative_url }}" class="inline-flex items-center gap-2 bg-livre-green hover:bg-livre-green-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
-            Ver autarcas
+          <a href="{{ '/municipios/' | relative_url }}" class="inline-flex items-center gap-2 bg-livre-green hover:bg-livre-green-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
+            Ver municípios
           </a>
           <a href="{{ '/propostas/' | relative_url }}" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-2.5 rounded-lg transition-colors">
             Ver propostas
@@ -34,24 +34,25 @@ title: "Início"
 <!-- Stats -->
 <div class="max-w-6xl mx-auto px-4 sm:px-6 -mt-8">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {% assign total_municipios = site.municipios | size %}
     {% assign total_autarcas = site.autarcas | where: "ativo", true | size %}
     {% assign total_propostas = site.propostas | size %}
-    {% assign total_juntas = site.juntas | size %}
-    <a href="{{ '/camara-municipal/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
-      <p class="text-3xl font-bold text-livre-green">1</p>
-      <p class="text-sm text-gray-600 mt-1">Vereador</p>
+    {% assign total_freguesias = site.freguesias | size %}
+    <a href="{{ '/municipios/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
+      <p class="text-3xl font-bold text-livre-green">{{ total_municipios }}</p>
+      <p class="text-sm text-gray-600 mt-1">Município{% if total_municipios != 1 %}s{% endif %}</p>
     </a>
-    <a href="{{ '/assembleia-municipal/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
-      <p class="text-3xl font-bold text-livre-green">2</p>
-      <p class="text-sm text-gray-600 mt-1">Deputados Municipais</p>
+    <a href="{{ '/autarcas/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
+      <p class="text-3xl font-bold text-livre-green">{{ total_autarcas }}</p>
+      <p class="text-sm text-gray-600 mt-1">Autarca{% if total_autarcas != 1 %}s{% endif %}</p>
     </a>
-    <a href="{{ '/juntas/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
-      <p class="text-3xl font-bold text-livre-green">{{ total_juntas }}</p>
-      <p class="text-sm text-gray-600 mt-1">Freguesias</p>
+    <a href="{{ '/freguesias/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
+      <p class="text-3xl font-bold text-livre-green">{{ total_freguesias }}</p>
+      <p class="text-sm text-gray-600 mt-1">Freguesia{% if total_freguesias != 1 %}s{% endif %}</p>
     </a>
     <a href="{{ '/propostas/' | relative_url }}" class="bg-white rounded-xl border border-gray-200 p-5 text-center shadow-sm hover:border-livre-green hover:bg-livre-green-light transition-colors block">
       <p class="text-3xl font-bold text-livre-green">{{ total_propostas }}</p>
-      <p class="text-sm text-gray-600 mt-1">Propostas</p>
+      <p class="text-sm text-gray-600 mt-1">Proposta{% if total_propostas != 1 %}s{% endif %}</p>
     </a>
   </div>
 </div>
@@ -70,19 +71,20 @@ title: "Início"
   </div>
 </div>
 
-<!-- Juntas -->
+<!-- Municípios -->
 <div class="bg-white border-t border-gray-100">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
     <div class="flex items-center justify-between mb-6">
-      <h2 class="text-2xl font-bold text-livre-dark">Juntas de Freguesia</h2>
-      <a href="{{ '/juntas/' | relative_url }}" class="text-sm text-livre-green hover:text-livre-green-dark transition-colors font-medium">Ver todas →</a>
+      <h2 class="text-2xl font-bold text-livre-dark">Municípios</h2>
+      <a href="{{ '/municipios/' | relative_url }}" class="text-sm text-livre-green hover:text-livre-green-dark transition-colors font-medium">Ver todos →</a>
     </div>
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {% for junta in site.juntas %}
-        <a href="{{ junta.url | relative_url }}" class="group block bg-gray-50 hover:bg-livre-green-light border border-gray-200 hover:border-livre-green rounded-xl p-4 transition-all">
-          <p class="font-semibold text-gray-800 group-hover:text-livre-green transition-colors">{{ junta.nome }}</p>
-          {% assign eleitos_junta = site.autarcas | where_exp: "a", "a.juntas contains junta.slug" | where: "ativo", true %}
-          <p class="text-xs text-gray-500 mt-1">{{ eleitos_junta.size }} eleito{% if eleitos_junta.size != 1 %}s{% endif %}</p>
+      {% assign municipios_sorted = site.municipios | sort: "nome" %}
+      {% for municipio in municipios_sorted %}
+        {% assign mun_autarcas = site.autarcas | where: "municipio", municipio.slug | where: "ativo", true %}
+        <a href="{{ municipio.url | relative_url }}" class="group block bg-gray-50 hover:bg-livre-green-light border border-gray-200 hover:border-livre-green rounded-xl p-4 transition-all">
+          <p class="font-semibold text-gray-800 group-hover:text-livre-green transition-colors">{{ municipio.nome }}</p>
+          <p class="text-xs text-gray-500 mt-1">{{ mun_autarcas.size }} eleito{% if mun_autarcas.size != 1 %}s{% endif %}</p>
         </a>
       {% endfor %}
     </div>

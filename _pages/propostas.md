@@ -5,7 +5,17 @@ description: "Propostas, moções, requerimentos e votos apresentados pelos elei
 ---
 <!-- Filters -->
 <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
-  <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <div>
+      <label for="filter-municipio" class="block text-xs font-medium text-gray-600 mb-1">Município</label>
+      <select id="filter-municipio" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-livre-green">
+        <option value="">Todos</option>
+        {% assign municipios_sorted = site.municipios | sort: "nome" %}
+        {% for municipio in municipios_sorted %}
+          <option value="{{ municipio.slug }}">{{ municipio.nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
     <div>
       <label for="filter-autarca" class="block text-xs font-medium text-gray-600 mb-1">Autarca</label>
       <select id="filter-autarca" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-livre-green">
@@ -17,13 +27,13 @@ description: "Propostas, moções, requerimentos e votos apresentados pelos elei
       </select>
     </div>
     <div>
-      <label for="filter-junta" class="block text-xs font-medium text-gray-600 mb-1">Órgão / Freguesia</label>
-      <select id="filter-junta" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-livre-green">
+      <label for="filter-freguesia" class="block text-xs font-medium text-gray-600 mb-1">Órgão / Freguesia</label>
+      <select id="filter-freguesia" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-livre-green">
         <option value="">Todos</option>
         <option value="camara-municipal">Câmara Municipal</option>
         <option value="assembleia-municipal">Assembleia Municipal</option>
-        {% for junta in site.juntas %}
-          <option value="{{ junta.slug }}">{{ junta.nome }}</option>
+        {% for freguesia in site.freguesias %}
+          <option value="{{ freguesia.slug }}">{{ freguesia.nome }}</option>
         {% endfor %}
       </select>
     </div>

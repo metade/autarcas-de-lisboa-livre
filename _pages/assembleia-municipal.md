@@ -1,7 +1,8 @@
 ---
-layout: junta
+layout: freguesia
 title: "Assembleia Municipal de Lisboa"
-permalink: /assembleia-municipal/
+permalink: /municipios/lisboa/assembleia-municipal/
+municipio: lisboa
 nome: "Assembleia Municipal de Lisboa"
 slug: "assembleia-municipal"
 tipo: "Assembleia Municipal"

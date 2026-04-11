@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: m
-juntas:
+municipio: lisboa
+freguesias:
   - avenidas-novas
 cargos:
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia das Avenidas Novas"
-    junta: "avenidas-novas"
+    freguesia: "avenidas-novas"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

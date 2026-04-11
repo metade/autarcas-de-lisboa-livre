@@ -1,7 +1,8 @@
 ---
-layout: junta
+layout: freguesia
 title: "Câmara Municipal de Lisboa"
-permalink: /camara-municipal/
+permalink: /municipios/lisboa/camara-municipal/
+municipio: lisboa
 nome: "Câmara Municipal de Lisboa"
 slug: "camara-municipal"
 tipo: "Câmara Municipal"

@@ -13,12 +13,13 @@ contacto_email: francisco.amp.costa.livre@gmail.com
 contacto_twitter: kikux
 contacto_instagram: franciscoampcosta
 genero: m
-juntas:
+municipio: lisboa
+freguesias:
   - alvalade
 cargos:
   - cargo: Membro de Assembleia
     orgao: Assembleia de Freguesia de Alvalade
-    junta: alvalade
+    freguesia: alvalade
     substitui: ''
     substituido_por: ''
 slug: francisco-costa

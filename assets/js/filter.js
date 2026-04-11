@@ -1,13 +1,14 @@
 (function () {
   'use strict';
 
-  const cards = Array.from(document.querySelectorAll('[data-junta]'));
+  const cards = Array.from(document.querySelectorAll('[data-freguesia]'));
   if (!cards.length) return;
 
   const params = new URLSearchParams(window.location.search);
 
   const selects = {
-    junta: document.getElementById('filter-junta'),
+    municipio: document.getElementById('filter-municipio'),
+    freguesia: document.getElementById('filter-freguesia'),
     estado: document.getElementById('filter-estado'),
     tipo: document.getElementById('filter-tipo'),
   };
@@ -30,7 +31,8 @@
   }
 
   function applyFilters() {
-    const filterJunta = selects.junta ? selects.junta.value : '';
+    const filterMunicipio = selects.municipio ? selects.municipio.value : '';
+    const filterFreguesia = selects.freguesia ? selects.freguesia.value : '';
     const filterEstado = selects.estado ? selects.estado.value : '';
     const filterTipo = selects.tipo ? selects.tipo.value : '';
     const filterAutarca = document.getElementById('filter-autarca')
@@ -40,13 +42,14 @@
     let visible = 0;
 
     cards.forEach(function (card) {
-      const matchJunta = !filterJunta || card.dataset.junta === filterJunta;
+      const matchMunicipio = !filterMunicipio || card.dataset.municipio === filterMunicipio;
+      const matchFreguesia = !filterFreguesia || card.dataset.freguesia === filterFreguesia;
       const matchEstado = !filterEstado || card.dataset.estado === filterEstado;
       const matchTipo = !filterTipo || card.dataset.tipo === filterTipo;
       const matchAutarca =
         !filterAutarca || getAutarcasFromCard(card).includes(filterAutarca);
 
-      const show = matchJunta && matchEstado && matchTipo && matchAutarca;
+      const show = matchMunicipio && matchFreguesia && matchEstado && matchTipo && matchAutarca;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
     });
@@ -56,7 +59,8 @@
 
     // Update URL without reload
     const newParams = new URLSearchParams();
-    if (filterJunta) newParams.set('junta', filterJunta);
+    if (filterMunicipio) newParams.set('municipio', filterMunicipio);
+    if (filterFreguesia) newParams.set('freguesia', filterFreguesia);
     if (filterEstado) newParams.set('estado', filterEstado);
     if (filterTipo) newParams.set('tipo', filterTipo);
     if (filterAutarca) newParams.set('autarca', filterAutarca);

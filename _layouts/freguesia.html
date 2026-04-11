@@ -1,0 +1,274 @@
+---
+layout: default
+---
+
+{% assign freguesia_slug = page.slug %} {% assign municipio_page =
+site.municipios | where: "slug", page.municipio | first %}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+    <!-- Breadcrumb -->
+    {% if municipio_page %}
+    <nav class="flex items-center gap-1.5 text-sm text-gray-500 mb-6">
+        <a
+            href="{{ '/municipios/' | relative_url }}"
+            class="hover:text-livre-green transition-colors"
+            >Municípios</a
+        >
+        <svg
+            class="w-3.5 h-3.5 text-gray-300 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+            />
+        </svg>
+        <a
+            href="{{ municipio_page.url | relative_url }}"
+            class="hover:text-livre-green transition-colors"
+            >{{ municipio_page.nome }}</a
+        >
+        <svg
+            class="w-3.5 h-3.5 text-gray-300 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+            />
+        </svg>
+        <span class="text-gray-700 font-medium">{{ page.nome }}</span>
+    </nav>
+    {% endif %}
+
+    <!-- Header -->
+    <div
+        class="bg-white rounded-2xl border border-gray-200 overflow-hidden mb-8"
+    >
+        {% if page.foto_junta != "" %}
+        <div class="h-40 bg-livre-green-light overflow-hidden">
+            <img
+                src="{{ page.foto_junta | relative_url }}"
+                alt="{{ page.nome }}"
+                class="w-full h-full object-cover"
+            />
+        </div>
+        {% else %}
+        <div
+            class="h-16 bg-gradient-to-r from-livre-green to-livre-green-dark"
+        ></div>
+        {% endif %}
+        <div class="p-6 md:p-8">
+            {% if page.tipo %}
+            <span
+                class="text-xs font-medium px-2 py-0.5 rounded-full bg-livre-green-light text-livre-green-dark mb-3 inline-block"
+                >{{ page.tipo }}</span
+            >
+            {% endif %}
+            <h1 class="text-2xl font-bold text-livre-dark">{{ page.nome }}</h1>
+            {% if page.descricao %}
+            <div
+                class="mt-3 text-gray-600 text-sm prose prose-sm max-w-none prose-a:text-livre-green"
+            >
+                {{ page.descricao | markdownify }}
+            </div>
+            {% endif %} {% assign _has_social = page.website_oficial | append:
+            page.facebook | append: page.x | append: page.instagram | append:
+            page.youtube %} {% if _has_social != "" %}
+            <div class="flex flex-wrap items-center gap-4 mt-4">
+                {% if page.website_oficial %}
+                <a
+                    href="{{ page.website_oficial }}"
+                    class="inline-flex items-center gap-1 text-sm text-livre-green hover:text-livre-green-dark transition-colors"
+                    rel="noopener"
+                    target="_blank"
+                    title="Website oficial"
+                >
+                    Website oficial
+                    <svg
+                        class="w-3.5 h-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                    </svg>
+                </a>
+                {% endif %} {% if page.facebook %}
+                <a
+                    href="{{ page.facebook }}"
+                    class="text-livre-green hover:text-livre-green-dark transition-colors"
+                    rel="noopener"
+                    target="_blank"
+                    title="Facebook"
+                >
+                    <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                        />
+                    </svg>
+                </a>
+                {% endif %} {% if page.x %}
+                <a
+                    href="{{ page.x }}"
+                    class="text-livre-green hover:text-livre-green-dark transition-colors"
+                    rel="noopener"
+                    target="_blank"
+                    title="X (Twitter)"
+                >
+                    <svg
+                        class="w-4 h-4"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.213 5.567 5.951-5.567zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                        />
+                    </svg>
+                </a>
+                {% endif %} {% if page.instagram %}
+                <a
+                    href="{{ page.instagram }}"
+                    class="text-livre-green hover:text-livre-green-dark transition-colors"
+                    rel="noopener"
+                    target="_blank"
+                    title="Instagram"
+                >
+                    <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect
+                            x="2"
+                            y="2"
+                            width="20"
+                            height="20"
+                            rx="5"
+                            ry="5"
+                        />
+                        <path
+                            d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                        />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </a>
+                {% endif %} {% if page.youtube %}
+                <a
+                    href="{{ page.youtube }}"
+                    class="text-livre-green hover:text-livre-green-dark transition-colors"
+                    rel="noopener"
+                    target="_blank"
+                    title="YouTube"
+                >
+                    <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+                        />
+                        <polygon
+                            points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                        />
+                    </svg>
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% assign _has_content = content | has_content %} {% if _has_content %}
+    <div
+        class="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 mb-8 prose prose-gray max-w-none prose-a:text-livre-green prose-headings:text-livre-dark"
+    >
+        {{ content }}
+    </div>
+    {% endif %}
+
+    <!-- Eleitos neste órgão -->
+    {% assign eleitos = site.autarcas | where_exp: "a", "a.freguesias contains
+    freguesia_slug" | where: "ativo", true %} {% if eleitos.size > 0 %}
+    <div class="mb-10">
+        <h2 class="text-xl font-bold text-livre-dark mb-5">Eleitos</h2>
+        <!-- Active members -->
+        <div
+            class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        >
+            {% for autarca in eleitos %} {% assign freguesia_cargo =
+            autarca.cargos | where: "freguesia", freguesia_slug | first %} {%
+            unless freguesia_cargo.ausente_temporariamente %} {% include
+            autarca-card.html autarca=autarca freguesia_slug=freguesia_slug %}
+            {% endunless %} {% endfor %}
+        </div>
+        <!-- Suspended members (separate faded row) -->
+        {% capture suspensos_html %}{% for autarca in eleitos %}{% assign
+        freguesia_cargo = autarca.cargos | where: "freguesia", freguesia_slug |
+        first %}{% if freguesia_cargo.ausente_temporariamente %}{% include
+        autarca-card.html autarca=autarca freguesia_slug=freguesia_slug %}{%
+        endif %}{% endfor %}{% endcapture %} {% assign suspensos_stripped =
+        suspensos_html | strip %} {% if suspensos_stripped != "" %}
+        <div class="mt-6 opacity-50">
+            <div
+                class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            >
+                {{ suspensos_html }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Propostas neste órgão -->
+    {% assign orgao_propostas = site.propostas | where: "freguesia",
+    freguesia_slug | sort: "data" | reverse %} {% if orgao_propostas.size > 0 %}
+    <div>
+        <div class="flex items-center justify-between mb-5">
+            <h2 class="text-xl font-bold text-livre-dark">
+                Propostas e Moções
+            </h2>
+            {% if page.municipio %}
+            <a
+                href="{{ '/municipios/' | append: page.municipio | append: '/propostas/' | append: freguesia_slug | append: '/' | relative_url }}"
+                class="text-sm text-livre-green hover:text-livre-green-dark transition-colors font-medium"
+                >Ver todas →</a
+            >
+            {% endif %}
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {% for proposta in orgao_propostas %} {% include proposta-card.html
+            proposta=proposta %} {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>

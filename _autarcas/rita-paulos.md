@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: f
-juntas:
+municipio: lisboa
+freguesias:
   - parque-das-nacoes
 cargos:
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia do Parque das Nações"
-    junta: "parque-das-nacoes"
+    freguesia: "parque-das-nacoes"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

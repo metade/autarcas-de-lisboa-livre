@@ -1,17 +1,22 @@
 ---
 layout: default
 ---
-{% assign organ_page = site.juntas | where: "slug", page.junta | first %}
+{% assign organ_page = site.freguesias | where: "slug", page.freguesia | first %}
 {% unless organ_page %}
-  {% assign _permalink = "/" | append: page.junta | append: "/" %}
+  {% assign _permalink = "/municipios/" | append: page.municipio | append: "/" | append: page.freguesia | append: "/" %}
   {% assign organ_page = site.pages | where: "permalink", _permalink | first %}
 {% endunless %}
+{% assign municipio_page = site.municipios | where: "slug", page.municipio | first %}
 
-{% assign propostas = site.propostas | where: "junta", page.junta | sort: "data" | reverse %}
+{% assign propostas = site.propostas | where: "freguesia", page.freguesia | where: "municipio", page.municipio | sort: "data" | reverse %}
 
 <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
   <div class="flex items-center justify-between mb-6">
     <nav class="flex items-center gap-1.5 text-sm text-gray-500">
+      {% if municipio_page %}
+        <a href="{{ municipio_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ municipio_page.nome }}</a>
+        <svg class="w-3.5 h-3.5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      {% endif %}
       {% if organ_page %}
         <a href="{{ organ_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ organ_page.nome }}</a>
         <svg class="w-3.5 h-3.5 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>

@@ -12,6 +12,62 @@ locale: pt
 
 collections:
 
+  # ── MUNICÍPIOS ─────────────────────────────────────────────────────────────
+  - name: municipios
+    label: Municípios
+    label_singular: Município
+    folder: _municipios
+    create: true
+    slug: "{{slug}}"
+    identifier_field: nome
+    fields:
+      - label: Nome
+        name: nome
+        widget: string
+
+      - label: Slug (identificador único, ex. "porto")
+        name: slug
+        widget: string
+
+      - label: Distrito
+        name: distrito
+        widget: string
+
+      - label: Descrição
+        name: descricao
+        widget: markdown
+        required: false
+
+      - label: Website oficial
+        name: website_oficial
+        widget: string
+        required: false
+        default: ""
+
+      - label: Facebook (URL completo)
+        name: facebook
+        widget: string
+        required: false
+        default: ""
+
+      - label: X / Twitter (URL completo)
+        name: x
+        widget: string
+        required: false
+        default: ""
+
+      - label: Instagram (URL completo)
+        name: instagram
+        widget: string
+        required: false
+        default: ""
+
+      - label: YouTube (URL completo)
+        name: youtube
+        widget: string
+        required: false
+        default: ""
+
   # ── AUTARCAS ──────────────────────────────────────────────────────────────
   - name: autarcas
     label: Autarcas
@@ -99,14 +155,23 @@ collections:
           - { label: "Neutro / Não-binário", value: "n" }
         default: m
 
-      - label: Juntas (para filtragem — preencher com os mesmos valores que em Cargos)
-        name: juntas
+      - label: Município
+        name: municipio
         widget: relation
-        collection: juntas
+        collection: municipios
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: slug
+
+      - label: Freguesias (para filtragem — preencher com os mesmos valores que em Cargos)
+        name: freguesias
+        widget: relation
+        collection: freguesias
         display_fields: [nome]
         search_fields: [nome]
         value_field: slug
         multiple: true
+        hint: "Para câmara-municipal e assembleia-municipal, adicionar manualmente após guardar."
 
       - label: Cargos
         name: cargos
@@ -129,13 +194,14 @@ collections:
           - label: Órgão (nome completo, ex. "Assembleia de Freguesia de Arroios")
             name: orgao
             widget: string
-          - label: Junta
-            name: junta
+          - label: Freguesia / Órgão
+            name: freguesia
             widget: relation
-            collection: juntas
+            collection: freguesias
             display_fields: [nome]
             search_fields: [nome]
             value_field: slug
+            hint: "Para câmara-municipal e assembleia-municipal, editar o ficheiro directamente."
           - label: Temporariamente ausente
             name: ausente_temporariamente
             widget: boolean
@@ -180,10 +246,10 @@ collections:
       - label: Nome
         name: nome
         widget: string
-      - label: Junta
-        name: junta
+      - label: Freguesia
+        name: freguesia
         widget: relation
-        collection: juntas
+        collection: freguesias
         display_fields: [nome]
         search_fields: [nome]
         value_field: slug
@@ -201,11 +267,11 @@ collections:
         name: nome
         widget: string
 
-  # ── JUNTAS DE FREGUESIA ────────────────────────────────────────────────────
-  - name: juntas
-    label: Juntas de Freguesia
-    label_singular: Junta de Freguesia
-    folder: _juntas
+  # ── FREGUESIAS ─────────────────────────────────────────────────────────────
+  - name: freguesias
+    label: Assembleias de Freguesia
+    label_singular: Assembleia de Freguesia
+    folder: _freguesias
     create: true
     slug: "{{slug}}"
     identifier_field: nome
@@ -217,6 +283,14 @@ collections:
       - label: Slug (identificador único, ex. "avenidas-novas")
         name: slug
         widget: string
+
+      - label: Município
+        name: municipio
+        widget: relation
+        collection: municipios
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: slug
 
       - label: Tipo de órgão
         name: tipo
@@ -272,29 +346,49 @@ collections:
         required: false
 
   # ── PROPOSTAS / MOÇÕES ─────────────────────────────────────────────────────
-  # One collection per organ. junta front matter is set automatically via _config.yml defaults.
-  # Slug pattern: {{year}}-{{slug}} (year-prefixed, no day/month given low volume).
+  # Single collection for all municipalities. Uses path template to place files
+  # in _propostas/{municipio}/{freguesia}/{year}-{slug}.md automatically.
+  # The municipio and freguesia front matter fields are set by the editor via dropdowns.
 
-  - name: propostas_camara_municipal
-    label: "Propostas — Câmara Municipal"
+  - name: propostas
+    label: Propostas
     label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/camara-municipal
+    folder: _propostas
+    path: "{{municipio}}/{{freguesia}}/{{year}}-{{slug}}"
     create: true
     slug: "{{year}}-{{slug}}"
+    identifier_field: title
+    summary: "{{title}} ({{data}})"
     editor:
       preview: false
-    media_folder: "_propostas/camara-municipal/{{slug}}"
-    public_folder: "/propostas/camara-municipal/{{slug}}"
     fields:
+      - label: Município
+        name: municipio
+        widget: relation
+        collection: municipios
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: slug
+
+      - label: Órgão / Freguesia
+        name: freguesia
+        widget: relation
+        collection: freguesias
+        display_fields: [nome]
+        search_fields: [nome]
+        value_field: slug
+        hint: "Para câmara-municipal e assembleia-municipal, editar o ficheiro directamente."
+
       - { label: Título, name: title, widget: string }
+
       - label: Tipo
         name: tipo
         widget: select
         options: [Proposta, Moção, Requerimento, Voto]
         default: Proposta
+
       - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+
       - label: Autores / Signatários
         name: autarcas
         widget: relation
@@ -303,13 +397,16 @@ collections:
         search_fields: [nome]
         value_field: "{{slug}}"
         multiple: true
+
       - label: Estado
         name: estado
         widget: select
         options: [Em análise, Aprovada, Rejeitada, Retirada]
         default: Em análise
+
       - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
       - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
+
       - label: Etiquetas
         name: tags
         widget: relation
@@ -319,6 +416,7 @@ collections:
         value_field: nome
         multiple: true
         required: false
+
       - label: Localizações
         name: localizacoes
         widget: relation
@@ -328,6 +426,7 @@ collections:
         value_field: nome
         multiple: true
         required: false
+
       - &votacao_field
         label: Resultado da votação
         name: votacao
@@ -391,601 +490,15 @@ collections:
                 fields:
                   - { label: Votos, name: votos, widget: number, value_type: int, required: false }
                   - { label: Partidos, name: partidos, widget: string, required: false, default: "" }
-      - { label: Texto completo, name: body, widget: markdown }
 
-  - name: propostas_assembleia_municipal
-    label: "Propostas — Assembleia Municipal"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/assembleia-municipal
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/assembleia-municipal/{{slug}}"
-    public_folder: "/propostas/assembleia-municipal/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_alvalade
-    label: "Propostas — Alvalade"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/alvalade
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/alvalade/{{slug}}"
-    public_folder: "/propostas/alvalade/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: alvalade
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_areeiro
-    label: "Propostas — Areeiro"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/areeiro
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/areeiro/{{slug}}"
-    public_folder: "/propostas/areeiro/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: areeiro
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_arroios
-    label: "Propostas — Arroios"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/arroios
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/arroios/{{slug}}"
-    public_folder: "/propostas/arroios/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: arroios
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_avenidas_novas
-    label: "Propostas — Avenidas Novas"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/avenidas-novas
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/avenidas-novas/{{slug}}"
-    public_folder: "/propostas/avenidas-novas/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: avenidas-novas
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_lumiar
-    label: "Propostas — Lumiar"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/lumiar
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/lumiar/{{slug}}"
-    public_folder: "/propostas/lumiar/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: lumiar
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_parque_das_nacoes
-    label: "Propostas — Parque das Nações"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/parque-das-nacoes
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/parque-das-nacoes/{{slug}}"
-    public_folder: "/propostas/parque-das-nacoes/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: parque-das-nacoes
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_penha_de_franca
-    label: "Propostas — Penha de França"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/penha-de-franca
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/penha-de-franca/{{slug}}"
-    public_folder: "/propostas/penha-de-franca/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: penha-de-franca
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_santo_antonio
-    label: "Propostas — Santo António"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/santo-antonio
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/santo-antonio/{{slug}}"
-    public_folder: "/propostas/santo-antonio/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: santo-antonio
-      - *votacao_field
-      - { label: Texto completo, name: body, widget: markdown }
-
-  - name: propostas_sao_domingos_de_benfica
-    label: "Propostas — São Domingos de Benfica"
-    label_singular: Proposta
-    identifier_field: title
-    summary: "{{title}} ({{data}})"
-    folder: _propostas/sao-domingos-de-benfica
-    create: true
-    slug: "{{year}}-{{slug}}"
-    editor:
-      preview: false
-    media_folder: "_propostas/sao-domingos-de-benfica/{{slug}}"
-    public_folder: "/propostas/sao-domingos-de-benfica/{{slug}}"
-    fields:
-      - { label: Título, name: title, widget: string }
-      - label: Tipo
-        name: tipo
-        widget: select
-        options: [Proposta, Moção, Requerimento, Voto]
-        default: Proposta
-      - { label: Data, name: data, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
-      - label: Autores / Signatários
-        name: autarcas
-        widget: relation
-        collection: autarcas
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: "{{slug}}"
-        multiple: true
-      - label: Estado
-        name: estado
-        widget: select
-        options: [Em análise, Aprovada, Rejeitada, Retirada]
-        default: Em análise
-      - { label: Resumo (para listagens), name: resumo, widget: text, required: false }
-      - { label: Documento (PDF), name: documento_url, widget: file, required: false, default: "" }
-      - label: Etiquetas
-        name: tags
-        widget: relation
-        collection: tags
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-      - label: Localizações
-        name: localizacoes
-        widget: relation
-        collection: locations
-        display_fields: [nome]
-        search_fields: [nome]
-        value_field: nome
-        multiple: true
-        required: false
-        filter:
-          field: junta
-          value: sao-domingos-de-benfica
-      - *votacao_field
       - { label: Texto completo, name: body, widget: markdown }
 
   # ── PÁGINAS ESTÁTICAS ──────────────────────────────────────────────────────
   - name: pages
     label: Páginas
     files:
-      - label: Câmara Municipal
-        name: camara_municipal
+      - label: Câmara Municipal (Lisboa)
+        name: camara_municipal_lisboa
         file: _pages/camara-municipal.md
         fields:
           - { label: Nome, name: nome, widget: string }
@@ -997,8 +510,8 @@ collections:
           - { label: "YouTube (URL completo)", name: youtube, widget: string, required: false, default: "" }
           - { label: Fotografia, name: foto_junta, widget: image, required: false }
 
-      - label: Assembleia Municipal
-        name: assembleia_municipal
+      - label: Assembleia Municipal (Lisboa)
+        name: assembleia_municipal_lisboa
         file: _pages/assembleia-municipal.md
         fields:
           - { label: Nome, name: nome, widget: string }

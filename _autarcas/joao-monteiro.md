@@ -5,16 +5,17 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: m
-juntas:
+municipio: lisboa
+freguesias:
   - assembleia-municipal
   - penha-de-franca
 cargos:
   - cargo: "Deputado/a Municipal"
     orgao: "Assembleia Municipal de Lisboa"
-    junta: "assembleia-municipal"
+    freguesia: "assembleia-municipal"
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia da Penha de França"
-    junta: "penha-de-franca"
+    freguesia: "penha-de-franca"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

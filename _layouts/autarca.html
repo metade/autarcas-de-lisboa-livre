@@ -7,6 +7,12 @@ layout: default
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
     Todos os autarcas
   </a>
+  {% if page.municipio %}
+    <div class="mb-2 text-xs text-gray-400">
+      {% assign municipio_page = site.municipios | where: "slug", page.municipio | first %}
+      {% if municipio_page %}<a href="{{ municipio_page.url | relative_url }}" class="hover:text-livre-green transition-colors">{{ municipio_page.nome }}</a>{% endif %}
+    </div>
+  {% endif %}
 
   <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
     <div class="md:flex">
@@ -31,11 +37,17 @@ layout: default
             {% for cargo in page.cargos %}
               <div class="flex items-center gap-2 flex-wrap">
                 <span class="inline-block px-2 py-0.5 text-xs font-medium bg-livre-green-light text-livre-green-dark rounded-full">{% include gendered.html text=cargo.cargo genero=page.genero %}</span>
-                {% assign junta_page = site.juntas | where: "slug", cargo.junta | first %}
-                {% if junta_page %}
-                  <a href="{{ junta_page.url | relative_url }}" class="text-sm text-gray-600 hover:text-livre-green transition-colors">{{ cargo.orgao }}</a>
+                {% assign freguesia_page = site.freguesias | where: "slug", cargo.freguesia | first %}
+                {% if freguesia_page %}
+                  <a href="{{ freguesia_page.url | relative_url }}" class="text-sm text-gray-600 hover:text-livre-green transition-colors">{{ cargo.orgao }}</a>
                 {% else %}
-                  <span class="text-sm text-gray-600">{{ cargo.orgao }}</span>
+                  {% assign _perm = "/municipios/" | append: page.municipio | append: "/" | append: cargo.freguesia | append: "/" %}
+                  {% assign special_page = site.pages | where: "permalink", _perm | first %}
+                  {% if special_page %}
+                    <a href="{{ special_page.url | relative_url }}" class="text-sm text-gray-600 hover:text-livre-green transition-colors">{{ cargo.orgao }}</a>
+                  {% else %}
+                    <span class="text-sm text-gray-600">{{ cargo.orgao }}</span>
+                  {% endif %}
                 {% endif %}
                 {% if cargo.ausente_temporariamente %}
                   <span class="text-xs font-medium px-2.5 py-1 bg-amber-50 text-amber-600 border border-amber-200 rounded-full">Temporariamente ausente</span>

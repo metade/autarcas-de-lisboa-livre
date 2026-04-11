@@ -1,6 +1,6 @@
 {% assign autarca = include.autarca %}
-{% if include.junta_slug %}
-  {% assign display_cargos = autarca.cargos | where: "junta", include.junta_slug %}
+{% if include.freguesia_slug %}
+  {% assign display_cargos = autarca.cargos | where: "freguesia", include.freguesia_slug %}
 {% else %}
   {% assign display_cargos = autarca.cargos %}
 {% endif %}

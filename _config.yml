@@ -1,5 +1,5 @@
-title: "Autarcas de Lisboa – Livre"
-description: "Eleitos e eleitas do Livre na Câmara Municipal, Assembleia Municipal e Juntas de Freguesia de Lisboa"
+title: "Autarcas do Livre"
+description: "Eleitos e eleitas do Livre nas autarquias locais de Portugal"
 baseurl: ""
 url: "https://autarcas-lisboa-livre.metade.org"
 lang: pt
@@ -8,15 +8,18 @@ lang: pt
 collections:
   pages:
     output: true
+  municipios:
+    output: true
+    permalink: /municipios/:slug/
   autarcas:
     output: true
-    permalink: /autarcas/:slug/
-  juntas:
+    permalink: /municipios/:municipio/autarcas/:slug/
+  freguesias:
     output: true
-    permalink: /juntas/:slug/
+    permalink: /municipios/:municipio/freguesias/:slug/
   propostas:
     output: true
-    permalink: /propostas/:path/
+    permalink: /municipios/:municipio/propostas/:freguesia/:slug/
   tags:
     output: false
   locations:
@@ -25,14 +28,19 @@ collections:
 defaults:
   - scope:
       path: ""
+      type: municipios
+    values:
+      layout: municipio
+  - scope:
+      path: ""
       type: autarcas
     values:
       layout: autarca
   - scope:
       path: ""
-      type: juntas
+      type: freguesias
     values:
-      layout: junta
+      layout: freguesia
   - scope:
       path: ""
       type: propostas
@@ -43,29 +51,29 @@ defaults:
       type: pages
     values:
       layout: page
-  # Per-organ junta defaults (auto-set front matter so Liquid filters work without editors filling it in)
-  - scope: { path: "_propostas/camara-municipal", type: propostas }
-    values: { junta: camara-municipal }
-  - scope: { path: "_propostas/assembleia-municipal", type: propostas }
-    values: { junta: assembleia-municipal }
-  - scope: { path: "_propostas/alvalade", type: propostas }
-    values: { junta: alvalade }
-  - scope: { path: "_propostas/areeiro", type: propostas }
-    values: { junta: areeiro }
-  - scope: { path: "_propostas/arroios", type: propostas }
-    values: { junta: arroios }
-  - scope: { path: "_propostas/avenidas-novas", type: propostas }
-    values: { junta: avenidas-novas }
-  - scope: { path: "_propostas/lumiar", type: propostas }
-    values: { junta: lumiar }
-  - scope: { path: "_propostas/parque-das-nacoes", type: propostas }
-    values: { junta: parque-das-nacoes }
-  - scope: { path: "_propostas/penha-de-franca", type: propostas }
-    values: { junta: penha-de-franca }
-  - scope: { path: "_propostas/santo-antonio", type: propostas }
-    values: { junta: santo-antonio }
-  - scope: { path: "_propostas/sao-domingos-de-benfica", type: propostas }
-    values: { junta: sao-domingos-de-benfica }
+  # Per-organ propostas defaults — auto-set municipio + freguesia from folder path
+  - scope: { path: "_propostas/lisboa/camara-municipal", type: propostas }
+    values: { municipio: lisboa, freguesia: camara-municipal }
+  - scope: { path: "_propostas/lisboa/assembleia-municipal", type: propostas }
+    values: { municipio: lisboa, freguesia: assembleia-municipal }
+  - scope: { path: "_propostas/lisboa/alvalade", type: propostas }
+    values: { municipio: lisboa, freguesia: alvalade }
+  - scope: { path: "_propostas/lisboa/areeiro", type: propostas }
+    values: { municipio: lisboa, freguesia: areeiro }
+  - scope: { path: "_propostas/lisboa/arroios", type: propostas }
+    values: { municipio: lisboa, freguesia: arroios }
+  - scope: { path: "_propostas/lisboa/avenidas-novas", type: propostas }
+    values: { municipio: lisboa, freguesia: avenidas-novas }
+  - scope: { path: "_propostas/lisboa/lumiar", type: propostas }
+    values: { municipio: lisboa, freguesia: lumiar }
+  - scope: { path: "_propostas/lisboa/parque-das-nacoes", type: propostas }
+    values: { municipio: lisboa, freguesia: parque-das-nacoes }
+  - scope: { path: "_propostas/lisboa/penha-de-franca", type: propostas }
+    values: { municipio: lisboa, freguesia: penha-de-franca }
+  - scope: { path: "_propostas/lisboa/santo-antonio", type: propostas }
+    values: { municipio: lisboa, freguesia: santo-antonio }
+  - scope: { path: "_propostas/lisboa/sao-domingos-de-benfica", type: propostas }
+    values: { municipio: lisboa, freguesia: sao-domingos-de-benfica }
 
 plugins:
   - jekyll-feed

@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: f
-juntas:
+municipio: lisboa
+freguesias:
   - assembleia-municipal
 cargos:
   - cargo: "Deputado/a Municipal"
     orgao: "Assembleia Municipal de Lisboa"
-    junta: "assembleia-municipal"
+    freguesia: "assembleia-municipal"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

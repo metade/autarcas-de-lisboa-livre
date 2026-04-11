@@ -1,4 +1,4 @@
 ---
 nome: Praça de Alvalade
-junta: alvalade
+freguesia: alvalade
 ---

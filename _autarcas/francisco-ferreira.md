@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: m
-juntas:
+municipio: lisboa
+freguesias:
   - lumiar
 cargos:
   - cargo: "Membro de Assembleia"
     orgao: "Assembleia de Freguesia do Lumiar"
-    junta: "lumiar"
+    freguesia: "lumiar"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""

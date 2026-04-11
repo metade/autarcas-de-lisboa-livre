@@ -5,12 +5,13 @@ foto: ""
 mandato_inicio: 2025-10-01
 ativo: true
 genero: m
-juntas:
+municipio: lisboa
+freguesias:
   - camara-municipal
 cargos:
   - cargo: "Vereador/a"
     orgao: "Câmara Municipal de Lisboa"
-    junta: "camara-municipal"
+    freguesia: "camara-municipal"
 biografia: ""
 contacto_email: ""
 contacto_twitter: ""
