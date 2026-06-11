@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:autarquicas.partidolivre.pt)",
       "Bash(curl -s https://autarquicas.partidolivre.pt/eleitos)",
-      "Bash(curl -s https://autarquicas.partidolivre.pt/build/assets/app-D3aSKfou.css)"
+      "Bash(curl -s https://autarquicas.partidolivre.pt/build/assets/app-D3aSKfou.css)",
+      "Bash(head -5 /Users/patrick/code/livre/autarcas-de-lisboa/_autarcas/*.md)"
     ]
   }
 }
